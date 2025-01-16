@@ -28,25 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            btnTaipowerBill = new Button();
+            openFileDialog1 = new OpenFileDialog();
             SuspendLayout();
             // 
-            // button1
+            // btnTaipowerBill
             // 
-            button1.Location = new Point(473, 172);
-            button1.Name = "button1";
-            button1.Size = new Size(198, 62);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnTaipowerBill.Location = new Point(541, 95);
+            btnTaipowerBill.Margin = new Padding(4);
+            btnTaipowerBill.Name = "btnTaipowerBill";
+            btnTaipowerBill.Size = new Size(463, 79);
+            btnTaipowerBill.TabIndex = 0;
+            btnTaipowerBill.Text = "台電轉供費用_請付款單 匯出";
+            btnTaipowerBill.UseVisualStyleBackColor = true;
+            btnTaipowerBill.Click += TaipowerBill_Click;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(14F, 30F);
+            AutoScaleDimensions = new SizeF(18F, 38F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            ClientSize = new Size(1698, 875);
+            Controls.Add(btnTaipowerBill);
+            Margin = new Padding(4);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -54,6 +61,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button btnTaipowerBill;
+        private OpenFileDialog openFileDialog1;
     }
 }

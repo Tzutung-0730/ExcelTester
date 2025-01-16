@@ -9,11 +9,22 @@ namespace ExcelTester
             InitializeComponent();
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private void TaipowerBill_Click(object sender, EventArgs e)
         {
-            var report = new Report();
-            await report.GeneralReport("Templates/Report_Template.xlsx", "Report_Result.xlsx");
-            MessageBox.Show("產生報表完成");
+            openFileDialog1.InitialDirectory = Application.StartupPath;
+            openFileDialog1.Filter = "Excel 檔 (*.xlsx)|*.xlsx";
+
+            var openResult = openFileDialog1.ShowDialog();
+            if (openResult == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+                var newFileName = $"{Path.GetDirectoryName(fileName)}/{Path.GetFileNameWithoutExtension(fileName)}1{Path.GetExtension(fileName)}";
+                var fakeData = StaticModelTaipowerBill.GenerateFakeData();
+
+                TaipowerBill.GenerateTaipowerBill(fileName, newFileName, fakeData);
+            }
+
+            MessageBox.Show("Done");
         }
     }
 }
