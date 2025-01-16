@@ -1,0 +1,150 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Practices\\ExcelTester\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|d:\\practices\\exceltester\\exceltester\\classes\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\classes\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|d:\\practices\\exceltester\\exceltester\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|d:\\practices\\exceltester\\exceltester\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|d:\\practices\\exceltester\\exceltester\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|d:\\practices\\exceltester\\exceltester\\staticmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\staticmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Carrey\\.nuget\\packages\\epplus\\7.5.2\\readme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 12,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Practices\\ExcelTester\\ExcelTester\\Program.cs",
+              "RelativeDocumentMoniker": "ExcelTester\\Program.cs",
+              "ToolTip": "D:\\Practices\\ExcelTester\\ExcelTester\\Program.cs",
+              "RelativeToolTip": "ExcelTester\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T07:43:52.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StaticModel.cs",
+              "DocumentMoniker": "D:\\Practices\\ExcelTester\\ExcelTester\\StaticModel.cs",
+              "RelativeDocumentMoniker": "ExcelTester\\StaticModel.cs",
+              "ToolTip": "D:\\Practices\\ExcelTester\\ExcelTester\\StaticModel.cs",
+              "RelativeToolTip": "ExcelTester\\StaticModel.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAIAswCgAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T07:35:47.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\Practices\\ExcelTester\\ExcelTester\\Form1.cs",
+              "RelativeDocumentMoniker": "ExcelTester\\Form1.cs",
+              "ToolTip": "D:\\Practices\\ExcelTester\\ExcelTester\\Form1.cs",
+              "RelativeToolTip": "ExcelTester\\Form1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T07:33:34.663Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "readme.txt",
+              "DocumentMoniker": "C:\\Users\\Carrey\\.nuget\\packages\\epplus\\7.5.2\\readme.txt",
+              "ToolTip": "C:\\Users\\Carrey\\.nuget\\packages\\epplus\\7.5.2\\readme.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-01-16T06:20:20.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Report.cs",
+              "DocumentMoniker": "D:\\Practices\\ExcelTester\\ExcelTester\\Classes\\Report.cs",
+              "RelativeDocumentMoniker": "ExcelTester\\Classes\\Report.cs",
+              "ToolTip": "D:\\Practices\\ExcelTester\\ExcelTester\\Classes\\Report.cs",
+              "RelativeToolTip": "ExcelTester\\Classes\\Report.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAEwEgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T06:11:52.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "D:\\Practices\\ExcelTester\\ExcelTester\\Form1.cs",
+              "RelativeDocumentMoniker": "ExcelTester\\Form1.cs",
+              "ToolTip": "D:\\Practices\\ExcelTester\\ExcelTester\\Form1.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "ExcelTester\\Form1.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T06:10:14.331Z",
+              "EditorCaption": " [\u8A2D\u8A08]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
