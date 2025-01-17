@@ -44,9 +44,9 @@ namespace ExcelTester
                 .RuleFor(o => o.Modifier, f => Guid.NewGuid()) // 修改者
                 .RuleFor(o => o.IsExtra, f => f.Random.Bool()); // 是否為附加費用
 
-            // 創建 Items 並逐筆添加到 CertificateBill 的 Items 屬性
+            // 創建 Items 並逐筆添加到 SupplierContractBill 的 Items 屬性
             var items = new List<ExcelColumnSupplierContractBillItem>();
-            var itemCount = new Faker().Random.Int(2, 5); // 隨機生成 2 到 5 個項目
+            var itemCount = new Faker().Random.Int(10, 15); // 隨機生成 2 到 5 個項目
             for (int i = 0; i < itemCount; i++)
             {
                 items.Add(itemFaker.Generate());

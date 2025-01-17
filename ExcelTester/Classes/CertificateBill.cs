@@ -27,24 +27,15 @@ namespace ExcelTester.Classes
 
             // 結算日期
             sheet1.Cells[4, 14].Value = ConvertToTaiwanCalendar(bill.SettleTime, "yyy/MM/dd");
-            sheet1.Cells[4, 14].Style.Font.Name = "標楷體";
-            sheet1.Cells[4, 14].Style.Font.Size = 16;
-            sheet1.Cells[4, 14].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
 
             // 事由
             sheet1.Cells[5, 3].Value = $"{ConvertToTaiwanCalendar(new DateTime(bill.BillYear, bill.BillMonth, 1), "yyy/MM")} 份 再生能源憑證規費";
-            sheet1.Cells[5, 3].Style.Font.Name = "標楷體";
-            sheet1.Cells[5, 3].Style.Font.Size = 16;
 
             // 說明第1點
             sheet1.Cells[9, 2].Value = $"1、繳納 {ConvertToTaiwanCalendar(new DateTime(bill.BillYear, bill.BillMonth, 1), "yyy/MM")} 再生能源憑證規費，審審查費總計 NTD${bill.Items.Sum(i => i.CertificateFee):N0}，服務費總計 NTD${bill.Items.Sum(i => i.ServiceFee):N0}，共計 NTD${bill.Items.Sum(i => i.CertificateFee + i.ServiceFee):N0}，詳見清單。";
-            sheet1.Cells[9, 2].Style.Font.Name = "標楷體";
-            sheet1.Cells[9, 2].Style.Font.Size = 16;
 
             // 說明第3點
-            sheet1.Cells[14, 2].Value = $"3、請財務部安排於 {ConvertToTaiwanCalendar(bill.PaymentDeadline, "yyy/MM/dd")} 前繳納（憑證中心同意）";
-            sheet1.Cells[14, 2].Style.Font.Name = "標楷體";
-            sheet1.Cells[14, 2].Style.Font.Size = 16;
+            sheet1.Cells[14, 2].Value = $"3、請財務部安排於 {ConvertToTaiwanCalendar(bill.PaymentDeadline, "yyy/MM/dd")} 前繳納（憑證中心同意）。";
 
             foreach (var item in bill.Items)
             {

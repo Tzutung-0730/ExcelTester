@@ -1,14 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\",
+  "WorkspaceRootPath": "C:\\Users\\tzutung\\SystexDocument\\ExcelTester\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\emeie\\systexdocument\\exceltester\\exceltester\\classes\\suppliercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\tzutung\\systexdocument\\exceltester\\exceltester\\staticmodelsuppliercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\staticmodelsuppliercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\tzutung\\systexdocument\\exceltester\\exceltester\\classes\\certificatebill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\classes\\certificatebill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\tzutung\\systexdocument\\exceltester\\exceltester\\classes\\suppliercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\classes\\suppliercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\emeie\\systexdocument\\exceltester\\exceltester\\staticmodelsuppliercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\staticmodelsuppliercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\tzutung\\systexdocument\\exceltester\\exceltester\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\tzutung\\systexdocument\\exceltester\\exceltester\\classes\\taipowerbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\classes\\taipowerbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,21 +30,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 10,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "StaticModelSupplierContractBill.cs",
-              "DocumentMoniker": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\StaticModelSupplierContractBill.cs",
-              "RelativeDocumentMoniker": "ExcelTester\\StaticModelSupplierContractBill.cs",
-              "ToolTip": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\StaticModelSupplierContractBill.cs",
-              "RelativeToolTip": "ExcelTester\\StaticModelSupplierContractBill.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBUAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-17T06:52:47.333Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -67,15 +66,67 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TaipowerBill.cs",
+              "DocumentMoniker": "C:\\Users\\tzutung\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\TaipowerBill.cs",
+              "RelativeDocumentMoniker": "ExcelTester\\Classes\\TaipowerBill.cs",
+              "ToolTip": "C:\\Users\\tzutung\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\TaipowerBill.cs",
+              "RelativeToolTip": "ExcelTester\\Classes\\TaipowerBill.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwCUAAAB1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-17T12:07:04.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\tzutung\\SystexDocument\\ExcelTester\\ExcelTester\\Form1.cs",
+              "RelativeDocumentMoniker": "ExcelTester\\Form1.cs",
+              "ToolTip": "C:\\Users\\tzutung\\SystexDocument\\ExcelTester\\ExcelTester\\Form1.cs",
+              "RelativeToolTip": "ExcelTester\\Form1.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAswDUAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-17T12:04:13.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "StaticModelSupplierContractBill.cs",
+              "DocumentMoniker": "C:\\Users\\tzutung\\SystexDocument\\ExcelTester\\ExcelTester\\StaticModelSupplierContractBill.cs",
+              "RelativeDocumentMoniker": "ExcelTester\\StaticModelSupplierContractBill.cs",
+              "ToolTip": "C:\\Users\\tzutung\\SystexDocument\\ExcelTester\\ExcelTester\\StaticModelSupplierContractBill.cs",
+              "RelativeToolTip": "ExcelTester\\StaticModelSupplierContractBill.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAQwCsAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-17T06:52:47.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "SupplierContractBill.cs",
-              "DocumentMoniker": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\SupplierContractBill.cs",
+              "DocumentMoniker": "C:\\Users\\tzutung\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\SupplierContractBill.cs",
               "RelativeDocumentMoniker": "ExcelTester\\Classes\\SupplierContractBill.cs",
-              "ToolTip": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\SupplierContractBill.cs",
+              "ToolTip": "C:\\Users\\tzutung\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\SupplierContractBill.cs",
               "RelativeToolTip": "ExcelTester\\Classes\\SupplierContractBill.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAuwEAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAswGMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-17T06:53:33.377Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CertificateBill.cs",
+              "DocumentMoniker": "C:\\Users\\tzutung\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\CertificateBill.cs",
+              "RelativeDocumentMoniker": "ExcelTester\\Classes\\CertificateBill.cs",
+              "ToolTip": "C:\\Users\\tzutung\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\CertificateBill.cs",
+              "RelativeToolTip": "ExcelTester\\Classes\\CertificateBill.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-17T11:56:29.737Z",
               "EditorCaption": ""
             }
           ]

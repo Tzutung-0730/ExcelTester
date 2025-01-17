@@ -27,24 +27,15 @@ namespace ExcelTester.Classes
 
             // 結算日期
             sheet1.Cells[4, 14].Value = ConvertToTaiwanCalendar(bill.SettleTime, "yyy/MM/dd");
-            sheet1.Cells[4, 14].Style.Font.Name = "標楷體";
-            sheet1.Cells[4, 14].Style.Font.Size = 16;
-            sheet1.Cells[4, 14].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
 
             // 事由
             sheet1.Cells[5, 3].Value = $"繳納 {ConvertToTaiwanCalendar(new DateTime(bill.BillYear, bill.BillMonth, 1), "yyy/MM")} 轉供費用";
-            sheet1.Cells[5, 3].Style.Font.Name = "標楷體";
-            sheet1.Cells[5, 3].Style.Font.Size = 16;
 
             // 說明第1點
             sheet1.Cells[9, 2].Value = $"1、繳納 {ConvertToTaiwanCalendar(new DateTime(bill.BillYear, bill.BillMonth, 1), "yyy/MM")} 台電轉供費用，總計 NT${bill.Items.Sum(i => i.TotalAmount):N0} (含稅)，詳見清單。";
-            sheet1.Cells[9, 2].Style.Font.Name = "標楷體";
-            sheet1.Cells[9, 2].Style.Font.Size = 16;
                 
             // 說明第3點
-            sheet1.Cells[14, 2].Value = $"3、請財務部安排於 {ConvertToTaiwanCalendar(bill.PaymentDeadline, "yyy/MM/dd")} 前繳納";
-            sheet1.Cells[14, 2].Style.Font.Name = "標楷體";
-            sheet1.Cells[14, 2].Style.Font.Size = 16;
+            sheet1.Cells[14, 2].Value = $"3、請財務部安排於 {ConvertToTaiwanCalendar(bill.PaymentDeadline, "yyy/MM/dd")} 前繳納。";
 
             foreach (var item in bill.Items)
             {
