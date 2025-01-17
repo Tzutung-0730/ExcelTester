@@ -13,6 +13,7 @@ namespace ExcelTester.Classes
         public Guid Modifier { get; set; }
         public List<ExcelColumnCertificateBillItem> Items { get; set; } = new List<ExcelColumnCertificateBillItem>();
     }
+
     public class ExcelColumnCertificateBillItem
     {
         public Guid CertificateBillItemId { get; set; }
