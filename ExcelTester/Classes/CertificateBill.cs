@@ -12,9 +12,9 @@ using OfficeOpenXml;
 
 namespace ExcelTester.Classes
 {
-    public class TaipowerBill
+    public class CertificateBill
     {
-        public static void WriteExcel(string srcTemplateFile, string newFileName, IEnumerable<ExcelColumnTaipowerBill> excelData)
+        public static void WriteExcel(string srcTemplateFile, string newFileName, IEnumerable<ExcelColumnCertificateBill> excelData)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using var package = new ExcelPackage(new FileInfo(srcTemplateFile));
@@ -32,17 +32,17 @@ namespace ExcelTester.Classes
             sheet1.Cells[4, 14].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
 
             // 事由
-            sheet1.Cells[5, 3].Value = $"繳納 {ConvertToTaiwanCalendar(new DateTime(bill.BillYear, bill.BillMonth, 1), "yyy/MM")} 轉供費用";
+            sheet1.Cells[5, 3].Value = $"{ConvertToTaiwanCalendar(new DateTime(bill.BillYear, bill.BillMonth, 1), "yyy/MM")} 份 再生能源憑證規費";
             sheet1.Cells[5, 3].Style.Font.Name = "標楷體";
             sheet1.Cells[5, 3].Style.Font.Size = 16;
 
             // 說明第1點
-            sheet1.Cells[9, 2].Value = $"1、繳納 {ConvertToTaiwanCalendar(new DateTime(bill.BillYear, bill.BillMonth, 1), "yyy/MM")} 台電轉供費用，總計 NT${bill.Items.Sum(i => i.TotalAmount):N0} (含稅)，詳見清單。";
+            sheet1.Cells[9, 2].Value = $"1、繳納 {ConvertToTaiwanCalendar(new DateTime(bill.BillYear, bill.BillMonth, 1), "yyy/MM")} 再生能源憑證規費，審審查費總計 NTD${bill.Items.Sum(i => i.CertificateFee):N0}，服務費總計 NTD${bill.Items.Sum(i => i.ServiceFee):N0}，共計 NTD${bill.Items.Sum(i => i.CertificateFee + i.ServiceFee):N0}，詳見清單。";
             sheet1.Cells[9, 2].Style.Font.Name = "標楷體";
             sheet1.Cells[9, 2].Style.Font.Size = 16;
-                
+
             // 說明第3點
-            sheet1.Cells[14, 2].Value = $"3、請財務部安排於 {ConvertToTaiwanCalendar(bill.PaymentDeadline, "yyy/MM/dd")} 前繳納";
+            sheet1.Cells[14, 2].Value = $"3、請財務部安排於 {ConvertToTaiwanCalendar(bill.PaymentDeadline, "yyy/MM/dd")} 前繳納（憑證中心同意）";
             sheet1.Cells[14, 2].Style.Font.Name = "標楷體";
             sheet1.Cells[14, 2].Style.Font.Size = 16;
 
@@ -51,9 +51,9 @@ namespace ExcelTester.Classes
                 // 將資料填入 sheet2
                 sheet2.Cells[sheet2CurrentRow, 1].Value = item.ProjectId;
                 sheet2.Cells[sheet2CurrentRow, 2].Value = item.SupplierPlaceName;
-                sheet2.Cells[sheet2CurrentRow, 3].Value = item.CustomerName;
-                sheet2.Cells[sheet2CurrentRow, 4].Value = item.TotalAmount / 1.25;
-                sheet2.Cells[sheet2CurrentRow, 5].Value = item.TotalAmount;
+                sheet2.Cells[sheet2CurrentRow, 3].Value = item.CertificateCount;
+                sheet2.Cells[sheet2CurrentRow, 4].Value = item.CertificateFee;
+                sheet2.Cells[sheet2CurrentRow, 5].Value = item.ServiceFee;
 
                 for (int col = 1; col <= 5; col++)
                 {
@@ -90,7 +90,7 @@ namespace ExcelTester.Classes
             sheet2.Cells[sheet2CurrentRow, 5].Formula = $"SUM(E2:E{sheet2CurrentRow - 1})";
 
             // 填寫付款金額到 sheet1
-            sheet1.Cells[17, 8].Formula = $"=清單!E{sheet2CurrentRow}";
+            sheet1.Cells[17, 8].Formula = $"=清單!D{sheet2CurrentRow} + 清單!E{sheet2CurrentRow}";
 
             // 設定總計行的樣式
             sheet2.Cells[sheet2CurrentRow, 1, sheet2CurrentRow, 5].Style.Font.Bold = true;

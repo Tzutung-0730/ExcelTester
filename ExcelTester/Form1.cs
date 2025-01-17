@@ -21,7 +21,24 @@ namespace ExcelTester
                 var newFileName = $"{Path.GetDirectoryName(fileName)}/{Path.GetFileNameWithoutExtension(fileName)}1{Path.GetExtension(fileName)}";
                 var fakeData = StaticModelTaipowerBill.GenerateFakeData();
 
-                TaipowerBill.GenerateTaipowerBill(fileName, newFileName, fakeData);
+                TaipowerBill.WriteExcel(fileName, newFileName, fakeData);
+            }
+
+            MessageBox.Show("Done");
+        }
+
+        private void btnCertificateBill_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.InitialDirectory = Application.StartupPath;
+            openFileDialog1.Filter = "Excel ¿… (*.xlsx)|*.xlsx";
+
+            var openResult = openFileDialog1.ShowDialog();
+            if (openResult == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+                var newFileName = $"{Path.GetDirectoryName(fileName)}/{Path.GetFileNameWithoutExtension(fileName)}1{Path.GetExtension(fileName)}";
+                var fakeData = StaticModelCertificateBill.GenerateFakeData();
+                CertificateBill.WriteExcel(fileName, newFileName, fakeData);
             }
 
             MessageBox.Show("Done");
