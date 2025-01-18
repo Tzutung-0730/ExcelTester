@@ -36,7 +36,7 @@ namespace ExcelTester
                 .RuleFor(o => o.SupplierPlaceId, f => Guid.NewGuid()) // 供應商地點Id
                 .RuleFor(o => o.SupplierPlaceName, f => f.Company.CompanyName()) // 供應商地點名稱
                 .RuleFor(o => o.Unit, f => f.Commerce.ProductMaterial()) // 單位
-                .RuleFor(o => o.UnitPrice, f => f.Random.Decimal(100, 1000)) // 單價
+                .RuleFor(o => o.UnitPrice, f => f.Random.Int(100, 1000)) // 單價
                 .RuleFor(o => o.Quantity, f => f.Random.Int(1, 100)) // 數量
                 .RuleFor(o => o.TotalAmount, f => f.Random.Int(1000, 10000)) // 總金額
                 .RuleFor(o => o.Note, f => f.Lorem.Sentence()) // 備註
@@ -46,7 +46,7 @@ namespace ExcelTester
 
             // 創建 Items 並逐筆添加到 SupplierContractBill 的 Items 屬性
             var items = new List<ExcelColumnSupplierContractBillItem>();
-            var itemCount = new Faker().Random.Int(10, 15); // 隨機生成 2 到 5 個項目
+            var itemCount = new Faker().Random.Int(2, 5); // 隨機生成 2 到 5 個項目
             for (int i = 0; i < itemCount; i++)
             {
                 items.Add(itemFaker.Generate());

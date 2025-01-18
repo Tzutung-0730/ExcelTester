@@ -77,9 +77,23 @@ namespace ExcelTester.Classes
 
             int startRow = 12;
             int currentRow = 12;
+            int maxRowsPerPage = 6;
 
             foreach (var Item in bill.Items)
             {
+                if (currentRow >= startRow + maxRowsPerPage)
+                {
+                    sheet1.InsertRow(currentRow, 1); // 插入一行
+                    sheet1.Cells[currentRow, 3, currentRow, 4].Merge = true;
+                    sheet1.Cells[currentRow, 10, currentRow, 12].Merge = true;
+
+                    for (int col = 1; col <= 12; col++)
+                    {
+                        sheet1.Cells[currentRow, col].StyleID = sheet1.Cells[currentRow - 1, col].StyleID;
+                    }
+                }
+
+                sheet1.Cells[currentRow, 8, currentRow, 9].Merge = true;
                 sheet1.Cells[currentRow, 2].Value = currentRow - startRow + 1;
                 sheet1.Cells[currentRow, 3].Value = Item.ItemName;
                 sheet1.Cells[currentRow, 5].Value = Item.Unit;
@@ -88,35 +102,18 @@ namespace ExcelTester.Classes
                 sheet1.Cells[currentRow, 8].Value = Item.TotalAmount;
                 sheet1.Cells[currentRow, 9].Value = Item.Note;
 
-                for (int col = 1; col <= 5; col++)
-                {
-                    var cell = sheet1.Cells[currentRow, col];
-
-                    if (col == 6 || col == 8)
-                    {
-                        cell.Style.Numberformat.Format = "#,##0"; // 千分位格式
-                    }
-                }
-
                 currentRow++;
-
-                if (currentRow - startRow + 1 > 5)
-                {
-                    sheet1.InsertRow(currentRow + 1, 1);
-                }
             }
 
-            if (currentRow > 16) 
-            {
-                sheet1.DeleteRow(currentRow + 1);
-            } else
-            {
-                currentRow = 17;
-            }
+            if (currentRow < 18) currentRow = 18;
  
-            sheet1.Cells[18, 8].Formula = $"SUM(H12:H{currentRow})";
-            sheet1.Cells[19, 8].Formula = $"=H{currentRow + 1} * 0.05";
-            sheet1.Cells[20, 8].Formula = $"=H{currentRow + 1} + H{currentRow + 2}";
+            sheet1.Cells[currentRow, 8].Formula = $"=SUM(H{startRow}:H{currentRow - 1})";
+            sheet1.Cells[currentRow + 1, 8].Formula = $"=ROUND(H{currentRow}*5%,0)";
+            sheet1.Cells[currentRow + 2, 8].Formula = $"=H{currentRow} + H{currentRow + 1}";
+            sheet1.Cells[currentRow + 7, 1].Value = $"付款方式 ： 匯款";
+            sheet1.Cells[currentRow + 8, 1].Value = $"收款戶名 ： {bill.ReceiveName}";
+            sheet1.Cells[currentRow + 9, 1].Value = $"收款行庫 ： {bill.ReceiveBankName}";
+            sheet1.Cells[currentRow + 10, 1].Value = $"收款帳號 ： {bill.ReceiveAccount}";
 
             package.SaveAs(new FileInfo(newFileName));
         }
