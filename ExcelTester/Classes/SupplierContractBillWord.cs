@@ -226,7 +226,13 @@ namespace ExcelTester.Classes
 
                 body.Append(new Paragraph(
                     new ParagraphProperties(
-                        new Justification { Val = JustificationValues.Left }),
+                        new Justification { Val = JustificationValues.Left },
+                        new SpacingBetweenLines
+                        {
+                            Line = "480",
+                            Before = "240" // 段落前距離，單位為 Twips (1/20 點)
+                        }
+                    ),
                     new Run(
                         new RunProperties(
                             new RunFonts { Ascii = "標楷體", EastAsia = "標楷體" },
