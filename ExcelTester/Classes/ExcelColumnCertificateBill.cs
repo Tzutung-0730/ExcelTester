@@ -1,6 +1,4 @@
-﻿using ExcelTester.Attributes;
-
-namespace ExcelTester.Classes
+﻿namespace ExcelTester.Classes
 {
     public class ExcelColumnCertificateBill
     {

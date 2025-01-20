@@ -35,14 +35,15 @@
             btnSupplierContractBill2 = new Button();
             btnCustomerContractBill1 = new Button();
             btnCustomerContractBill2 = new Button();
+            btnSupplierContractBill3 = new Button();
             SuspendLayout();
             // 
             // btnTaipowerBill
             // 
-            btnTaipowerBill.Location = new Point(540, 94);
-            btnTaipowerBill.Margin = new Padding(4);
+            btnTaipowerBill.Location = new Point(93, 45);
+            btnTaipowerBill.Margin = new Padding(2, 2, 2, 2);
             btnTaipowerBill.Name = "btnTaipowerBill";
-            btnTaipowerBill.Size = new Size(550, 80);
+            btnTaipowerBill.Size = new Size(275, 40);
             btnTaipowerBill.TabIndex = 0;
             btnTaipowerBill.Text = "台電轉供費用_請付款單 匯出";
             btnTaipowerBill.UseVisualStyleBackColor = true;
@@ -54,10 +55,10 @@
             // 
             // btnCertificateBill
             // 
-            btnCertificateBill.Location = new Point(540, 210);
-            btnCertificateBill.Margin = new Padding(4);
+            btnCertificateBill.Location = new Point(93, 103);
+            btnCertificateBill.Margin = new Padding(2, 2, 2, 2);
             btnCertificateBill.Name = "btnCertificateBill";
-            btnCertificateBill.Size = new Size(550, 78);
+            btnCertificateBill.Size = new Size(275, 39);
             btnCertificateBill.TabIndex = 1;
             btnCertificateBill.Text = "憑證中心憑證費用_請付款單 匯出";
             btnCertificateBill.UseVisualStyleBackColor = true;
@@ -65,10 +66,10 @@
             // 
             // btnSupplierContractBill1
             // 
-            btnSupplierContractBill1.Location = new Point(540, 334);
-            btnSupplierContractBill1.Margin = new Padding(4);
+            btnSupplierContractBill1.Location = new Point(93, 165);
+            btnSupplierContractBill1.Margin = new Padding(2, 2, 2, 2);
             btnSupplierContractBill1.Name = "btnSupplierContractBill1";
-            btnSupplierContractBill1.Size = new Size(550, 78);
+            btnSupplierContractBill1.Size = new Size(275, 39);
             btnSupplierContractBill1.TabIndex = 2;
             btnSupplierContractBill1.Text = "台汽綠能_電業公司_請付款單 匯出";
             btnSupplierContractBill1.UseVisualStyleBackColor = true;
@@ -76,10 +77,10 @@
             // 
             // btnSupplierContractBill2
             // 
-            btnSupplierContractBill2.Location = new Point(540, 460);
-            btnSupplierContractBill2.Margin = new Padding(4);
+            btnSupplierContractBill2.Location = new Point(93, 228);
+            btnSupplierContractBill2.Margin = new Padding(2, 2, 2, 2);
             btnSupplierContractBill2.Name = "btnSupplierContractBill2";
-            btnSupplierContractBill2.Size = new Size(550, 78);
+            btnSupplierContractBill2.Size = new Size(275, 39);
             btnSupplierContractBill2.TabIndex = 3;
             btnSupplierContractBill2.Text = "台汽綠能_電業公司_付款通知 匯出";
             btnSupplierContractBill2.UseVisualStyleBackColor = true;
@@ -87,10 +88,10 @@
             // 
             // btnCustomerContractBill1
             // 
-            btnCustomerContractBill1.Location = new Point(540, 590);
-            btnCustomerContractBill1.Margin = new Padding(4);
+            btnCustomerContractBill1.Location = new Point(93, 293);
+            btnCustomerContractBill1.Margin = new Padding(2, 2, 2, 2);
             btnCustomerContractBill1.Name = "btnCustomerContractBill1";
-            btnCustomerContractBill1.Size = new Size(550, 78);
+            btnCustomerContractBill1.Size = new Size(275, 39);
             btnCustomerContractBill1.TabIndex = 4;
             btnCustomerContractBill1.Text = "台汽綠能_客戶_統一發票資料單 匯出";
             btnCustomerContractBill1.UseVisualStyleBackColor = true;
@@ -98,27 +99,39 @@
             // 
             // btnCustomerContractBill2
             // 
-            btnCustomerContractBill2.Location = new Point(540, 715);
-            btnCustomerContractBill2.Margin = new Padding(4);
+            btnCustomerContractBill2.Location = new Point(93, 356);
+            btnCustomerContractBill2.Margin = new Padding(2, 2, 2, 2);
             btnCustomerContractBill2.Name = "btnCustomerContractBill2";
-            btnCustomerContractBill2.Size = new Size(550, 78);
+            btnCustomerContractBill2.Size = new Size(275, 39);
             btnCustomerContractBill2.TabIndex = 5;
             btnCustomerContractBill2.Text = "台汽綠能_客戶_繳費通知 匯出";
             btnCustomerContractBill2.UseVisualStyleBackColor = true;
             btnCustomerContractBill2.Click += btnCustomerContractBill2_Click;
             // 
+            // btnSupplierContractBill3
+            // 
+            btnSupplierContractBill3.Location = new Point(470, 46);
+            btnSupplierContractBill3.Margin = new Padding(2);
+            btnSupplierContractBill3.Name = "btnSupplierContractBill3";
+            btnSupplierContractBill3.Size = new Size(305, 39);
+            btnSupplierContractBill3.TabIndex = 6;
+            btnSupplierContractBill3.Text = "TGE-PS-S02_電業公司_驗收紀錄表 匯出";
+            btnSupplierContractBill3.UseVisualStyleBackColor = true;
+            btnSupplierContractBill3.Click += btnSupplierContractBill3_Click;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(18F, 38F);
+            AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1698, 876);
+            ClientSize = new Size(849, 438);
+            Controls.Add(btnSupplierContractBill3);
             Controls.Add(btnCustomerContractBill2);
             Controls.Add(btnCustomerContractBill1);
             Controls.Add(btnSupplierContractBill2);
             Controls.Add(btnSupplierContractBill1);
             Controls.Add(btnCertificateBill);
             Controls.Add(btnTaipowerBill);
-            Margin = new Padding(4);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -133,5 +146,6 @@
         private Button btnSupplierContractBill2;
         private Button btnCustomerContractBill1;
         private Button btnCustomerContractBill2;
+        private Button btnSupplierContractBill3;
     }
 }

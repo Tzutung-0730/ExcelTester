@@ -1,8 +1,4 @@
-﻿using System.ComponentModel;
-using System.Text.Json.Serialization;
-using ExcelTester.Attributes;
-
-namespace ExcelTester.Classes
+﻿namespace ExcelTester.Classes
 {
     public class ExcelColumnCustomerContractBill
     {
@@ -10,6 +6,9 @@ namespace ExcelTester.Classes
         public Guid CustomerId { get; set; }
         public required string CustomerName { get; set; }
         public Guid CustomerContractId { get; set; }
+        public required string CustomerTaxIDNumber { get; set; }
+        public required string CustomerAddress { get; set; }
+        public required string CustomerContactNumber { get; set; }
         public required string BillCode { get; set; }
         public int BillYear { get; set; }
         public int BillMonth { get; set; }
@@ -32,13 +31,12 @@ namespace ExcelTester.Classes
         public Guid CustomerContractBillId { get; set; }
         public int SortOrder { get; set; }
         public required string ItemName { get; set; }
+        public required string ProjectId { get; set; }
         public required string Unit { get; set; }
         public decimal? UnitPrice { get; set; }
         public int? Quantity { get; set; }
         public int TotalAmount { get; set; }
         public string? Note { get; set; }
-
-        [JsonIgnore]
         public Guid? Modifier { get; set; }
         public bool IsExtra { get; set; } = false;
     }

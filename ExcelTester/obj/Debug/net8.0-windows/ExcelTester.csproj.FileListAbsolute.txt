@@ -90,3 +90,5 @@ C:\Users\emeie\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows\T
 C:\Users\emeie\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows\Templates\台汽綠能_客戶_繳費通知範本.xlsx
 C:\Users\emeie\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows\Templates\台汽綠能_電業公司_付款通知範本.xlsx
 C:\Users\emeie\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows\Templates\台汽綠能_電業公司_請付款單範本.xlsx
+C:\Users\emeie\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows\Templates\TGE-PS-S02_電業公司_驗收紀錄表範本.docx
+C:\Users\emeie\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows\Templates\測試用空白文件.docx

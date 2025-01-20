@@ -26,16 +26,16 @@ namespace ExcelTester.Classes
             var bill = excelData.First();
 
             // 結算日期
-            sheet1.Cells[4, 14].Value = ConvertToTaiwanCalendar(bill.SettleTime, "yyy/MM/dd");
+            sheet1.Cells[4, 14].Value = $"{bill.SettleTime:yyy/MM/dd}";
 
             // 事由
-            sheet1.Cells[5, 3].Value = $"繳納 {ConvertToTaiwanCalendar(new DateTime(bill.BillYear, bill.BillMonth, 1), "yyy/MM")} 轉供費用";
+            sheet1.Cells[5, 3].Value = $"繳納 {bill.BillYear - 1911}/{bill.BillMonth:D2} 轉供費用";
 
             // 說明第1點
-            sheet1.Cells[9, 2].Value = $"1、繳納 {ConvertToTaiwanCalendar(new DateTime(bill.BillYear, bill.BillMonth, 1), "yyy/MM")} 台電轉供費用，總計 NT${bill.Items.Sum(i => i.TotalAmount):N0} (含稅)，詳見清單。";
+            sheet1.Cells[9, 2].Value = $"1、繳納 {bill.BillYear - 1911}/{bill.BillMonth:D2} 台電轉供費用，總計 NT${bill.Items.Sum(i => i.TotalAmount):N0} (含稅)，詳見清單。";
                 
             // 說明第3點
-            sheet1.Cells[14, 2].Value = $"3、請財務部安排於 {ConvertToTaiwanCalendar(bill.PaymentDeadline, "yyy/MM/dd")} 前繳納。";
+            sheet1.Cells[14, 2].Value = $"3、請財務部安排於 {bill.PaymentDeadline:yyy/MM/dd} 前繳納。";
 
             foreach (var item in bill.Items)
             {
@@ -71,15 +71,6 @@ namespace ExcelTester.Classes
 
             // 儲存 Excel 到指定的新檔案名稱
             package.SaveAs(new FileInfo(newFileName));
-        }
-
-        private static string ConvertToTaiwanCalendar(DateTime date, string format)
-        {
-            var taiwanCalendar = new System.Globalization.TaiwanCalendar();
-            return date.ToString(format, new System.Globalization.CultureInfo("zh-TW")
-            {
-                DateTimeFormat = { Calendar = taiwanCalendar }
-            });
         }
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExcelTester")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c72f278938c16ef83728dc2c84ceb0b3407c3960")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2c4b7ff70c26b04713fa3ef7279e8849cbd9006")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExcelTester")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExcelTester")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

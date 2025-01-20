@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\emeie\\systexdocument\\exceltester\\exceltester\\classes\\customercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\classes\\customercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\emeie\\systexdocument\\exceltester\\exceltester\\classes\\suppliercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\classes\\suppliercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\emeie\\systexdocument\\exceltester\\exceltester\\classes\\suppliercontractbillword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\classes\\suppliercontractbillword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\emeie\\systexdocument\\exceltester\\exceltester\\staticmodelsuppliercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\staticmodelsuppliercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\emeie\\systexdocument\\exceltester\\exceltester\\staticmodelcustomercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\staticmodelcustomercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,54 +54,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "StaticModelSupplierContractBill.cs",
               "DocumentMoniker": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\StaticModelSupplierContractBill.cs",
               "RelativeDocumentMoniker": "ExcelTester\\StaticModelSupplierContractBill.cs",
               "ToolTip": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\StaticModelSupplierContractBill.cs",
               "RelativeToolTip": "ExcelTester\\StaticModelSupplierContractBill.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBcAAABJAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T02:04:11.09Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SupplierContractBill.cs",
-              "DocumentMoniker": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\SupplierContractBill.cs",
-              "RelativeDocumentMoniker": "ExcelTester\\Classes\\SupplierContractBill.cs",
-              "ToolTip": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\SupplierContractBill.cs",
-              "RelativeToolTip": "ExcelTester\\Classes\\SupplierContractBill.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAqwEAAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T12:54:55.73Z",
+              "WhenOpened": "2025-01-20T07:54:55.397Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CustomerContractBill.cs",
-              "DocumentMoniker": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\CustomerContractBill.cs",
-              "RelativeDocumentMoniker": "ExcelTester\\Classes\\CustomerContractBill.cs",
-              "ToolTip": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\CustomerContractBill.cs",
-              "RelativeToolTip": "ExcelTester\\Classes\\CustomerContractBill.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAcwFcAAAAJAAAAAAAAAA==",
+              "Title": "SupplierContractBillWord.cs",
+              "DocumentMoniker": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\SupplierContractBillWord.cs",
+              "RelativeDocumentMoniker": "ExcelTester\\Classes\\SupplierContractBillWord.cs",
+              "ToolTip": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\SupplierContractBillWord.cs",
+              "RelativeToolTip": "ExcelTester\\Classes\\SupplierContractBillWord.cs",
+              "ViewState": "AgIAAM0AAAAAAAAAAAAiwOcAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T12:13:08.399Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "StaticModelCustomerContractBill.cs",
-              "DocumentMoniker": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\StaticModelCustomerContractBill.cs",
-              "RelativeDocumentMoniker": "ExcelTester\\StaticModelCustomerContractBill.cs",
-              "ToolTip": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\StaticModelCustomerContractBill.cs",
-              "RelativeToolTip": "ExcelTester\\StaticModelCustomerContractBill.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwC4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T13:08:03.896Z",
+              "WhenOpened": "2025-01-20T07:14:10.023Z",
               "EditorCaption": ""
             }
           ]

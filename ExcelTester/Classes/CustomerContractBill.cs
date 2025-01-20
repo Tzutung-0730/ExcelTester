@@ -15,7 +15,7 @@ namespace ExcelTester.Classes
 {
     internal class CustomerContractBill
     {
-        public static void WriteExcel1(string srcTemplateFile, string newFileName, IEnumerable<ExcelColumnCustomerContractBill> excelData)
+        public static void WriteExcel_Invoice(string srcTemplateFile, string newFileName, IEnumerable<ExcelColumnCustomerContractBill> excelData)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using var package = new ExcelPackage(new FileInfo(srcTemplateFile));
@@ -27,11 +27,14 @@ namespace ExcelTester.Classes
             sheet1.Cells[3, 10].Value = bill.SettleTime;
 
             // 專案代號，以「、」區隔
-            var projectCodes = string.Join("、", bill.Items.Select(i => i.CustomerContractBillId));
+            var projectCodes = string.Join("、", bill.Items
+                            .Where(i => !string.IsNullOrEmpty(i.ProjectId)) // 過濾掉空值
+                            .Select(i => i.ProjectId)
+                            .Distinct()); // 過濾重複值
             sheet1.Cells[4, 6].Value = $"專案代號：{projectCodes}";
             sheet1.Cells[5, 1].Value = $"買    受    人：{bill.CustomerName}";
-            sheet1.Cells[5, 6].Value = $"統一編號：統編";
-            sheet1.Cells[6, 1].Value = $"地      　　址：地址";
+            sheet1.Cells[5, 6].Value = $"統一編號：{bill.CustomerTaxIDNumber}";
+            sheet1.Cells[6, 1].Value = $"地      　　址：{bill.CustomerAddress}";
 
             int startRow = 8;
             int currentRow = 8;
@@ -82,12 +85,12 @@ namespace ExcelTester.Classes
             sheet1.Cells[currentRow + 1, 8].Formula = $"=ROUND(H{currentRow}*5%,0)";
             sheet1.Cells[currentRow + 1, 8].Style.Numberformat.Format = "#,##0";
             sheet1.Cells[currentRow + 2, 8].Formula = $"=H{currentRow} + H{currentRow + 1}";
-            sheet1.Cells[12, 9].Value = $"預計收款日期：{bill.PaymentDeadline:yyyy/MM/DD}";
+            sheet1.Cells[currentRow, 9].Value = $"預計收款日期：{bill.PaymentDeadline:yyyy/MM/dd}";
 
             package.SaveAs(new FileInfo(newFileName));
         }
 
-        public static void WriteExcel2(string srcTemplateFile, string newFileName, IEnumerable<ExcelColumnCustomerContractBill> excelData)
+        public static void WriteExcel_PaymentNotice(string srcTemplateFile, string newFileName, IEnumerable<ExcelColumnCustomerContractBill> excelData)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using var package = new ExcelPackage(new FileInfo(srcTemplateFile));
@@ -105,9 +108,9 @@ namespace ExcelTester.Classes
             sheet1.Cells[4, 5].Value = $"計費期間：{startDate:yyyy/MM/dd}~{endDate:yyyy/MM/dd}";
 
             sheet1.Cells[5, 4].Value = bill.CustomerName;
-            sheet1.Cells[6, 4].Value = "統一編號";
-            sheet1.Cells[7, 4].Value = "地址";
-            sheet1.Cells[8, 4].Value = "電話";
+            sheet1.Cells[6, 4].Value = bill.CustomerTaxIDNumber;
+            sheet1.Cells[7, 4].Value = bill.CustomerAddress;
+            sheet1.Cells[8, 4].Value = bill.CustomerContactNumber;
             sheet1.Cells[8, 8].Value = $"繳費期限：{bill.PaymentDeadline:yyyy/MM/dd}";
 
             int startRow = 11;

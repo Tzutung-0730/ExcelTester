@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Packaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Office2016.Excel;
+using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
 using ExcelTester.Attributes;
@@ -14,7 +16,7 @@ namespace ExcelTester.Classes
 {
     internal class SupplierContractBill
     {
-        public static void WriteExcel1(string srcTemplateFile, string newFileName, IEnumerable<ExcelColumnSupplierContractBill> excelData)
+        public static void WriteExcel_Invoice(string srcTemplateFile, string newFileName, IEnumerable<ExcelColumnSupplierContractBill> excelData)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using var package = new ExcelPackage(new FileInfo(srcTemplateFile));
@@ -24,13 +26,16 @@ namespace ExcelTester.Classes
             var bill = excelData.First();
 
             // 結算日期
-            sheet1.Cells[4, 14].Value = ConvertToTaiwanCalendar(bill.SettleTime, "yyy/MM/dd");
+            sheet1.Cells[4, 14].Value = $"{bill.SettleTime:yyy/MM/dd}";
             
             // 事由
-            sheet1.Cells[5, 3].Value = $"{ConvertToTaiwanCalendar(new DateTime(bill.BillYear, bill.BillMonth, 1), "yyy/MM")} 份再生能源電能費用({bill.SupplierName})";
-            
+            sheet1.Cells[5, 3].Value = $"{bill.BillYear - 1911}/{bill.BillMonth:D2} 份再生能源電能費用({bill.SupplierName})";
+
             // 專案工作代號，以「、」區隔
-            var projectCodes = string.Join("、", bill.Items.Select(i => i.SupplierContractBillId));
+            var projectCodes = string.Join("、", bill.Items
+                .Where(i => !string.IsNullOrEmpty(i.ProjectId)) // 過濾掉空值
+                .Select(i => i.ProjectId)
+                .Distinct()); // 過濾重複值
             sheet1.Cells[6, 10].Value = $"專案工作代號：{projectCodes}";
 
             // 說明第1點
@@ -47,13 +52,13 @@ namespace ExcelTester.Classes
 
             // 填寫付款資訊到 sheet1
             sheet1.Cells[19, 2].Value = bill.SupplierName;
-            sheet1.Cells[19, 6].Value = "轉帳";
+            sheet1.Cells[19, 6].Value = bill.PaymentMethod;
             sheet1.Cells[19, 8].Value = bill.Items.Sum(i => i.TotalAmount);
 
             package.SaveAs(new FileInfo(newFileName));
         }
 
-        public static void WriteExcel2(string srcTemplateFile, string newFileName, IEnumerable<ExcelColumnSupplierContractBill> excelData)
+        public static void WriteExcel_PaymentNotice(string srcTemplateFile, string newFileName, IEnumerable<ExcelColumnSupplierContractBill> excelData)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using var package = new ExcelPackage(new FileInfo(srcTemplateFile));
@@ -71,9 +76,9 @@ namespace ExcelTester.Classes
             sheet1.Cells[5, 7].Value = $"{startDate:yyyy/MM/dd}~{endDate:yyyy/MM/dd}";
 
             sheet1.Cells[6, 4].Value = bill.SupplierName;
-            sheet1.Cells[7, 4].Value = "統一編號";
-            sheet1.Cells[8, 4].Value = "地址";
-            sheet1.Cells[9, 4].Value = "電話";
+            sheet1.Cells[7, 4].Value = bill.SupplierTaxIDNumber;
+            sheet1.Cells[8, 4].Value = bill.SupplierAddress;
+            sheet1.Cells[9, 4].Value = bill.SupplierContactNumber;
             sheet1.Cells[9, 10].Value = $"付款期限：{bill.PaymentDeadline:yyyy/MM/dd}";
 
             int startRow = 12;
@@ -111,21 +116,12 @@ namespace ExcelTester.Classes
             sheet1.Cells[currentRow, 8].Formula = $"=SUM(H{startRow}:H{currentRow - 1})";
             sheet1.Cells[currentRow + 1, 8].Formula = $"=ROUND(H{currentRow}*5%,0)";
             sheet1.Cells[currentRow + 2, 8].Formula = $"=H{currentRow} + H{currentRow + 1}";
-            sheet1.Cells[currentRow + 7, 1].Value = $"付款方式 ： 匯款";
+            sheet1.Cells[currentRow + 7, 1].Value = $"付款方式 ： {bill.PaymentMethod}";
             sheet1.Cells[currentRow + 8, 1].Value = $"收款戶名 ： {bill.ReceiveName}";
             sheet1.Cells[currentRow + 9, 1].Value = $"收款行庫 ： {bill.ReceiveBankName}";
             sheet1.Cells[currentRow + 10, 1].Value = $"收款帳號 ： {bill.ReceiveAccount}";
 
             package.SaveAs(new FileInfo(newFileName));
-        }
-
-        private static string ConvertToTaiwanCalendar(DateTime date, string format)
-        {
-            var taiwanCalendar = new System.Globalization.TaiwanCalendar();
-            return date.ToString(format, new System.Globalization.CultureInfo("zh-TW")
-            {
-                DateTimeFormat = { Calendar = taiwanCalendar }
-            });
         }
     }
 }

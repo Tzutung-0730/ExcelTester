@@ -9,14 +9,18 @@ namespace ExcelTester
         {
             // 使用 Faker 生成假資料
             var billFaker = new Faker<ExcelColumnSupplierContractBill>()
-                .RuleFor(o => o.SupplierContractBillId, f => Guid.NewGuid()) // 電業公司契約帳單唯一識別碼
-                .RuleFor(o => o.SupplierId, f => Guid.NewGuid()) // 電業公司 Id
-                .RuleFor(o => o.SupplierName, f => f.Company.CompanyName()) // 電業公司名稱
+                .RuleFor(o => o.SupplierContractBillId, f => Guid.NewGuid()) // 帳單唯一識別碼
+                .RuleFor(o => o.SupplierId, f => Guid.NewGuid()) // 電業公司唯一識別碼
+                .RuleFor(o => o.SupplierName, f => f.Random.AlphaNumeric(8)) // 電業公司名稱
                 .RuleFor(o => o.SupplierContractId, f => Guid.NewGuid()) // 電業公司契約唯一識別碼
+                .RuleFor(o => o.SupplierTaxIDNumber, f => f.Random.String2(8, "0123456789")) // 電業公司統一編號
+                .RuleFor(o => o.SupplierAddress, f => f.Address.FullAddress()) // 電業公司地址
+                .RuleFor(o => o.SupplierContactNumber, f => f.Phone.PhoneNumber()) // 電業公司聯絡電話
                 .RuleFor(o => o.BillCode, f => f.Commerce.Ean13()) // 帳單編號
-                .RuleFor(o => o.BillYear, f => f.Date.Past(5).Year) // 帳單年度
-                .RuleFor(o => o.BillMonth, f => f.Date.Past(5).Month) // 帳單月份
+                .RuleFor(o => o.BillYear, f => f.Date.Past(1).Year) // 帳單年度
+                .RuleFor(o => o.BillMonth, f => f.Date.Past(1).Month) // 帳單月份
                 .RuleFor(o => o.PaymentDeadline, f => f.Date.Future()) // 付款截止日
+                .RuleFor(o => o.PaymentMethod, f => f.Finance.TransactionType()) // 付款方式
                 .RuleFor(o => o.ReceiveAccount, f => f.Finance.Account()) // 收款帳戶
                 .RuleFor(o => o.ReceiveName, f => f.Name.FullName()) // 收款帳戶名稱
                 .RuleFor(o => o.ReceiveBankName, f => f.Company.CompanyName()) // 收款帳戶銀行名稱
@@ -29,16 +33,18 @@ namespace ExcelTester
 
             // 創建 Items 並逐筆添加
             var itemFaker = new Faker<ExcelColumnSupplierContractBillItem>()
-                .RuleFor(o => o.SupplierContractBillItemId, f => Guid.NewGuid()) // 帳單項目Id
-                .RuleFor(o => o.SupplierContractBillId, f => Guid.NewGuid()) // 帳單Id
+                .RuleFor(o => o.SupplierContractBillItemId, f => Guid.NewGuid()) // 帳單項目唯一識別碼
+                .RuleFor(o => o.SupplierContractBillId, f => Guid.NewGuid()) // 關聯帳單唯一識別碼
                 .RuleFor(o => o.SortOrder, f => f.Random.Int(1, 10)) // 排序
                 .RuleFor(o => o.ItemName, f => f.Commerce.ProductName()) // 項目名稱
-                .RuleFor(o => o.SupplierPlaceId, f => Guid.NewGuid()) // 供應商地點Id
-                .RuleFor(o => o.SupplierPlaceName, f => f.Company.CompanyName()) // 供應商地點名稱
+                .RuleFor(o => o.SupplierPlaceId, f => Guid.NewGuid()) // 電業公司案場唯一識別碼
+                .RuleFor(o => o.SupplierPlaceName, f => f.Address.City()) // 案場名稱
+                .RuleFor(o => o.SupplierElectricityNumber, f => f.Random.AlphaNumeric(8)) // 電號
+                .RuleFor(o => o.ProjectId, f => f.Random.AlphaNumeric(5)) // 案場專案代號
                 .RuleFor(o => o.Unit, f => f.Commerce.ProductMaterial()) // 單位
-                .RuleFor(o => o.UnitPrice, f => f.Random.Int(100, 1000)) // 單價
+                .RuleFor(o => o.UnitPrice, f => f.Random.Decimal(10, 500)) // 單價
                 .RuleFor(o => o.Quantity, f => f.Random.Int(1, 100)) // 數量
-                .RuleFor(o => o.TotalAmount, f => f.Random.Int(1000, 10000)) // 總金額
+                .RuleFor(o => o.TotalAmount, (f, o) => (int)(o.UnitPrice.GetValueOrDefault() * o.Quantity.GetValueOrDefault())) // 總金額
                 .RuleFor(o => o.Note, f => f.Lorem.Sentence()) // 備註
                 .RuleFor(o => o.ModifyTime, f => f.Date.Recent()) // 修改時間
                 .RuleFor(o => o.Modifier, f => Guid.NewGuid()) // 修改者
