@@ -31,7 +31,7 @@ namespace ExcelTester.Classes
             
             // 專案工作代號，以「、」區隔
             var projectCodes = string.Join("、", bill.Items.Select(i => i.SupplierContractBillId));
-            sheet1.Cells[6, 11].Value = $"專案工作代號：{projectCodes}";
+            sheet1.Cells[6, 10].Value = $"專案工作代號：{projectCodes}";
 
             // 說明第1點
             var supplierCodes = string.Join("、", bill.Items.Select(i => i.SupplierPlaceId));
@@ -48,7 +48,7 @@ namespace ExcelTester.Classes
             // 填寫付款資訊到 sheet1
             sheet1.Cells[19, 2].Value = bill.SupplierName;
             sheet1.Cells[19, 6].Value = "轉帳";
-            sheet1.Cells[19, 8].Value = bill.Items.Sum(i => i.TotalAmount).ToString("#,##0");
+            sheet1.Cells[19, 8].Value = bill.Items.Sum(i => i.TotalAmount);
 
             package.SaveAs(new FileInfo(newFileName));
         }
@@ -63,7 +63,8 @@ namespace ExcelTester.Classes
             var bill = excelData.First();
 
             sheet1.Cells[5, 4].Value = bill.SupplierContractBillId;
-            sheet1.Cells[5, 12].Value = "yyyy/MM/dd";
+            sheet1.Cells[5, 10].Value = $"製發日期：{bill.SettleTime:yyyy/MM/dd}";
+            sheet1.Cells[5, 10, 5, 11].Merge = false;
 
             var startDate = new DateTime(bill.BillYear, bill.BillMonth, 1);
             var endDate = startDate.AddMonths(1).AddDays(-1);
@@ -100,7 +101,7 @@ namespace ExcelTester.Classes
                 sheet1.Cells[currentRow, 6].Value = Item.UnitPrice;
                 sheet1.Cells[currentRow, 7].Value = Item.Quantity;
                 sheet1.Cells[currentRow, 8].Value = Item.TotalAmount;
-                sheet1.Cells[currentRow, 9].Value = Item.Note;
+                sheet1.Cells[currentRow, 10].Value = Item.Note;
 
                 currentRow++;
             }

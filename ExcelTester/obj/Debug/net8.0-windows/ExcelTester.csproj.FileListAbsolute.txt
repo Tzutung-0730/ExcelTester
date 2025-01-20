@@ -86,3 +86,7 @@ C:\Users\tzutung\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows
 C:\Users\tzutung\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows\Templates\台汽綠能_電業公司_請付款單範本.xlsx
 C:\Users\tzutung\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows\Templates\台汽綠能_客戶_統一發票資料單範本.xlsx
 C:\Users\tzutung\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows\Templates\台汽綠能_客戶_繳費通知範本.xlsx
+C:\Users\emeie\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows\Templates\台汽綠能_客戶_統一發票資料單範本.xlsx
+C:\Users\emeie\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows\Templates\台汽綠能_客戶_繳費通知範本.xlsx
+C:\Users\emeie\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows\Templates\台汽綠能_電業公司_付款通知範本.xlsx
+C:\Users\emeie\SystexDocument\ExcelTester\ExcelTester\bin\Debug\net8.0-windows\Templates\台汽綠能_電業公司_請付款單範本.xlsx

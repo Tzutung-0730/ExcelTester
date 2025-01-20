@@ -9,6 +9,7 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
 using ExcelTester.Attributes;
 using OfficeOpenXml;
+using OfficeOpenXml.Style;
 
 namespace ExcelTester.Classes
 {
@@ -27,15 +28,10 @@ namespace ExcelTester.Classes
 
             // 專案代號，以「、」區隔
             var projectCodes = string.Join("、", bill.Items.Select(i => i.CustomerContractBillId));
-            sheet1.Cells[4, 7].Value = projectCodes;
-            sheet1.Cells[4, 7].Style.Font.Name = "標楷體";
-            sheet1.Cells[4, 7].Style.Font.Size = 12;
-            sheet1.Cells[4, 7].Style.Font.Bold = false;
-            sheet1.Cells[5, 2].Value = bill.CustomerName;
-            sheet1.Cells[5, 2].Style.Font.Name = "標楷體";
-            sheet1.Cells[5, 7].Value = "統編";
-            sheet1.Cells[5, 7].Style.Font.Name = "標楷體";
-            sheet1.Cells[6, 2].Value = "地址";
+            sheet1.Cells[4, 6].Value = $"專案代號：{projectCodes}";
+            sheet1.Cells[5, 1].Value = $"買    受    人：{bill.CustomerName}";
+            sheet1.Cells[5, 6].Value = $"統一編號：統編";
+            sheet1.Cells[6, 1].Value = $"地      　　址：地址";
 
             int startRow = 8;
             int currentRow = 8;
@@ -70,20 +66,23 @@ namespace ExcelTester.Classes
                     sheet1.Row(currentRow).Height = 25.2;
                     sheet1.Cells[currentRow, 1].Value = Item.ItemName;
                 }
-                    sheet1.Cells[currentRow, 3].Value = Item.Quantity;
+
+                sheet1.Cells[currentRow, 3].Value = Item.Quantity;
                 sheet1.Cells[currentRow, 5].Value = Item.UnitPrice;
                 sheet1.Cells[currentRow, 7].Value = Item.TotalAmount;
                 sheet1.Cells[currentRow, 7].Style.Numberformat.Format = "#,##0";
+                sheet1.Cells[currentRow, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
 
                 currentRow++;
             }
             
             if (currentRow < 12) currentRow = 12;
 
-            sheet1.Cells[currentRow, 8].Formula = $"=SUM(H{startRow}:H{currentRow - 1})";
+            sheet1.Cells[currentRow, 8].Formula = $"=SUM(G{startRow}:G{currentRow - 1})";
             sheet1.Cells[currentRow + 1, 8].Formula = $"=ROUND(H{currentRow}*5%,0)";
+            sheet1.Cells[currentRow + 1, 8].Style.Numberformat.Format = "#,##0";
             sheet1.Cells[currentRow + 2, 8].Formula = $"=H{currentRow} + H{currentRow + 1}";
-            sheet1.Cells[12, 10].Value = "yyyy/MM/dd";
+            sheet1.Cells[12, 9].Value = $"預計收款日期：{bill.PaymentDeadline:yyyy/MM/DD}";
 
             package.SaveAs(new FileInfo(newFileName));
         }
@@ -98,7 +97,7 @@ namespace ExcelTester.Classes
             var bill = excelData.First();
 
             sheet1.Cells[4, 4].Value = bill.CustomerContractBillId;
-            sheet1.Cells[3, 10].Value = $"yyyy/MM/dd";
+            sheet1.Cells[3, 9].Value = $"製發日期：{bill.SettleTime:yyyy/MM/dd}";
             sheet1.Cells[4, 7, 4, 8].Merge = false;
 
             var startDate = new DateTime(bill.BillYear, bill.BillMonth, 1);

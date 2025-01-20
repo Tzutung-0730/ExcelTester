@@ -48,31 +48,13 @@ namespace ExcelTester.Classes
 
                 for (int col = 1; col <= 5; col++)
                 {
-                    var cell = sheet2.Cells[sheet2CurrentRow, col];
-
-                    // 設定資料行樣式
-                    if (sheet2CurrentRow > 2)
-                    {
-                        cell.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                        cell.Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml("#F2F2F2"));
-                        cell.Style.Font.Bold = false;
-                        cell.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
-                    }
-
-                    // 設定數字格式
-                    if (col == 4 || col == 5)
-                    {
-                        cell.Style.Numberformat.Format = "#,##0"; // 千分位格式
-                    }
+                    sheet2.Cells[sheet2CurrentRow, col].StyleID = sheet2.Cells[2, col].StyleID;
+                    sheet2.Cells[sheet2CurrentRow, col].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                 }
 
-                sheet2.Cells[sheet2CurrentRow, 1].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
-                sheet2.Cells[sheet2CurrentRow, 5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
                 sheet2CurrentRow++;
             }
 
-            // 設定 2A 到 2E 單元格的下框線為 Thin
-            sheet2.Cells[2, 1, 2, 5].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
             sheet2.Cells[sheet2CurrentRow - 1, 1, sheet2CurrentRow - 1, 5].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
 
             // 填寫總計行到 sheet2
