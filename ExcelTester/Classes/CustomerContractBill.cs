@@ -23,8 +23,16 @@ namespace ExcelTester.Classes
             ExcelWorksheet sheet1 = package.Workbook.Worksheets[0];
 
             var bill = excelData.First();
+            int startRow = 8;
+            int currentRow = 8;
+            int maxRowsPerPage = 4;
+            var startDate = new DateTime(bill.BillYear, bill.BillMonth, 1);
+            var endDate = startDate.AddMonths(1).AddDays(-1);
+            var totalAmount = bill.Items.Sum(i => i.TotalAmount);
+            var tax = Math.Round(totalAmount * 0.05, 0);
+            var totalWithTax = totalAmount + tax;
 
-            sheet1.Cells[3, 10].Value = bill.SettleTime;
+            sheet1.Cells[3, 10].Value = $"{bill.SettleTime.Year - 1911}/{bill.SettleTime:MM/dd}";
 
             // 專案代號，以「、」區隔
             var projectCodes = string.Join("、", bill.Items
@@ -35,12 +43,6 @@ namespace ExcelTester.Classes
             sheet1.Cells[5, 1].Value = $"買    受    人：{bill.CustomerName}";
             sheet1.Cells[5, 6].Value = $"統一編號：{bill.CustomerTaxIDNumber}";
             sheet1.Cells[6, 1].Value = $"地      　　址：{bill.CustomerAddress}";
-
-            int startRow = 8;
-            int currentRow = 8;
-            int maxRowsPerPage = 4;
-            var startDate = new DateTime(bill.BillYear, bill.BillMonth, 1);
-            var endDate = startDate.AddMonths(1).AddDays(-1);
 
             foreach (var Item in bill.Items)
             {
@@ -62,7 +64,8 @@ namespace ExcelTester.Classes
                 if (Item.ItemName == "再生能源發電費" || Item.ItemName == "電能代輸轉供服務費用")
                 {
                     sheet1.Row(currentRow).Height = 39;
-                    sheet1.Cells[currentRow, 1].Value = $"{Item.ItemName}\n({startDate:yyy/MM/dd}~{endDate:yyy/MM/dd})";
+                    sheet1.Cells[currentRow, 1].Value = $"{Item.ItemName}\n({startDate.Year - 1911}/{startDate:MM/dd}~{endDate.Year - 1911}/{endDate:MM/dd})";
+                    sheet1.Cells[currentRow, 1].Style.WrapText = true; // 啟用自動換行
                 }
                 else
                 {
@@ -73,7 +76,18 @@ namespace ExcelTester.Classes
                 sheet1.Cells[currentRow, 3].Value = Item.Quantity;
                 sheet1.Cells[currentRow, 5].Value = Item.UnitPrice;
                 sheet1.Cells[currentRow, 7].Value = Item.TotalAmount;
+                sheet1.Cells[currentRow, 3].Style.Numberformat.Format = "#,##0";
+                double value = Convert.ToDouble(sheet1.Cells[currentRow, 5].Value);
+                if (value % 1 == 0) // 判斷是否為整數
+                {
+                    sheet1.Cells[currentRow, 5].Style.Numberformat.Format = "#,##0"; // 整數格式
+                } else
+                {
+                    sheet1.Cells[currentRow, 5].Style.Numberformat.Format = "#,##0.####"; // 小數格式
+                }
                 sheet1.Cells[currentRow, 7].Style.Numberformat.Format = "#,##0";
+                sheet1.Cells[currentRow, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                sheet1.Cells[currentRow, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                 sheet1.Cells[currentRow, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
 
                 currentRow++;
@@ -81,11 +95,13 @@ namespace ExcelTester.Classes
             
             if (currentRow < 12) currentRow = 12;
 
-            sheet1.Cells[currentRow, 8].Formula = $"=SUM(G{startRow}:G{currentRow - 1})";
-            sheet1.Cells[currentRow + 1, 8].Formula = $"=ROUND(H{currentRow}*5%,0)";
+            sheet1.Cells[currentRow, 8].Value = totalAmount;
+            sheet1.Cells[currentRow + 1, 8].Value = tax;
             sheet1.Cells[currentRow + 1, 8].Style.Numberformat.Format = "#,##0";
-            sheet1.Cells[currentRow + 2, 8].Formula = $"=H{currentRow} + H{currentRow + 1}";
-            sheet1.Cells[currentRow, 9].Value = $"預計收款日期：{bill.PaymentDeadline:yyyy/MM/dd}";
+            sheet1.Cells[currentRow + 2, 8].Value = totalWithTax;
+            sheet1.Cells[currentRow + 1, 10].Value = $"{bill.PaymentDeadline.Year - 1911}/{bill.PaymentDeadline:MM/dd}";
+            sheet1.Cells[currentRow + 1, 10].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
 
             package.SaveAs(new FileInfo(newFileName));
         }
@@ -98,13 +114,15 @@ namespace ExcelTester.Classes
             ExcelWorksheet sheet1 = package.Workbook.Worksheets[0];
 
             var bill = excelData.First();
-
-            sheet1.Cells[4, 4].Value = bill.CustomerContractBillId;
-            sheet1.Cells[3, 9].Value = $"製發日期：{bill.SettleTime:yyyy/MM/dd}";
-            sheet1.Cells[4, 7, 4, 8].Merge = false;
-
             var startDate = new DateTime(bill.BillYear, bill.BillMonth, 1);
             var endDate = startDate.AddMonths(1).AddDays(-1);
+            var totalAmount = bill.Items.Sum(i => i.TotalAmount);
+            var tax = Math.Round(totalAmount * 0.05, 0);
+            var totalWithTax = totalAmount + tax;
+
+            sheet1.Cells[4, 4].Value = bill.BillCode;
+            sheet1.Cells[3, 9].Value = $"製發日期：{bill.SettleTime:yyyy/MM/dd}";
+            sheet1.Cells[4, 7, 4, 8].Merge = false;            
             sheet1.Cells[4, 5].Value = $"計費期間：{startDate:yyyy/MM/dd}~{endDate:yyyy/MM/dd}";
 
             sheet1.Cells[5, 4].Value = bill.CustomerName;
@@ -144,9 +162,9 @@ namespace ExcelTester.Classes
 
             if (currentRow < 15) currentRow = 15;
 
-            sheet1.Cells[currentRow, 8].Formula = $"=SUM(H{startRow}:H{currentRow - 1})";
-            sheet1.Cells[currentRow + 1, 8].Formula = $"=ROUND(H{currentRow}*5%,0)";
-            sheet1.Cells[currentRow + 2, 8].Formula = $"=H{currentRow} + H{currentRow + 1}";
+            sheet1.Cells[currentRow, 8].Value = totalAmount;
+            sheet1.Cells[currentRow + 1, 8].Value = tax;
+            sheet1.Cells[currentRow + 2, 8].Value = totalWithTax;
 
             package.SaveAs(new FileInfo(newFileName));
         }

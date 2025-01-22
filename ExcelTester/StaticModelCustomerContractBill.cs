@@ -1,65 +1,104 @@
-﻿using Bogus;
+﻿using System;
+using System.Collections.Generic;
 using ExcelTester.Classes;
 
 namespace ExcelTester
 {
     internal static class StaticModelCustomerContractBill
     {
-        // 生成假資料 for TaipowerBill（包含 Items 資料）
-        public static IEnumerable<ExcelColumnCustomerContractBill> GenerateFakeData()
+        public static IEnumerable<ExcelColumnCustomerContractBill> GetData()
         {
-            // 生成單一 TaipowerBill 的假資料
-            var billFaker = new Faker<ExcelColumnCustomerContractBill>()
-                .RuleFor(o => o.CustomerContractBillId, f => Guid.NewGuid()) // 客戶契約帳單唯一識別碼
-                .RuleFor(o => o.CustomerId, f => Guid.NewGuid()) // 客戶唯一識別碼
-                .RuleFor(o => o.CustomerName, f => f.Company.CompanyName()) // 客戶名稱
-                .RuleFor(o => o.CustomerContractId, f => Guid.NewGuid()) // 客戶契約唯一識別碼
-                .RuleFor(o => o.CustomerTaxIDNumber, f => f.Random.String2(8, "0123456789")) // 客戶統一編號
-                .RuleFor(o => o.CustomerAddress, f => f.Address.FullAddress()) // 客戶地址
-                .RuleFor(o => o.CustomerContactNumber, f => f.Phone.PhoneNumber()) // 客戶聯絡電話
-                .RuleFor(o => o.BillCode, f => f.Commerce.Ean13()) // 帳單編碼
-                .RuleFor(o => o.BillYear, f => f.Date.Past(5).Year) // 帳單年份
-                .RuleFor(o => o.BillMonth, f => f.Date.Past(1).Month) // 帳單月份
-                .RuleFor(o => o.BillingMethod, f => f.PickRandom<BillingMethodType>()) // 帳單開立方式
-                .RuleFor(o => o.ReceiveItem, f => f.PickRandom<ReceiveItemType>()) // 收款項目
-                .RuleFor(o => o.IsSplitByReceiveItem, f => f.Random.Bool()) // 是否依收款項目拆分帳單
-                .RuleFor(o => o.IndustCategory, f => f.Commerce.Department()) // 產業類別
-                .RuleFor(o => o.EelecBelong, f => f.Company.CompanyName()) // 電號所屬
-                .RuleFor(o => o.PaymentDeadline, f => f.Date.Future(1)) // 付款截止日期
-                .RuleFor(o => o.TotalPowerUse, f => f.Random.Int(1000, 100000)) // 當月總用電量
-                .RuleFor(o => o.SettleTime, f => f.Date.Future(1)) // 結帳日期
-                .RuleFor(o => o.ModifyTime, f => f.Date.Recent()) // 修改時間
-                .RuleFor(o => o.Modifier, f => Guid.NewGuid()); // 修改者
-
-            // 生成 1 筆 TaipowerBill 假資料
-            var customerContractBill = billFaker.Generate(1).First();
-
-            // 創建 Items 並逐筆添加
-            var itemFaker = new Faker<ExcelColumnCustomerContractBillItem>()
-                .RuleFor(o => o.CustomerContractBillItemId, f => Guid.NewGuid()) // 帳單項目Id
-                .RuleFor(o => o.CustomerContractBillId, f => Guid.NewGuid()) // 帳單Id
-                .RuleFor(o => o.SortOrder, f => f.Random.Int(1, 10)) // 排序
-                .RuleFor(o => o.ItemName, f => f.Commerce.ProductName()) // 項目名稱
-                .RuleFor(o => o.ProjectId, f => f.Random.AlphaNumeric(10)) // 案場專案代號
-                .RuleFor(o => o.Unit, f => f.Random.ArrayElement(new[] { "kWh", "MW", "GWh" })) // 單位
-                .RuleFor(o => o.UnitPrice, f => f.Random.Decimal(1, 1000)) // 單價
-                .RuleFor(o => o.Quantity, f => f.Random.Int(1, 100)) // 數量
-                .RuleFor(o => o.TotalAmount, (f, o) => (int)((o.UnitPrice ?? 0) * (o.Quantity ?? 0))) // 總金額
-                .RuleFor(o => o.Note, f => f.Lorem.Sentence()) // 備註
-                .RuleFor(o => o.Modifier, f => Guid.NewGuid()) // 修改者
-                .RuleFor(o => o.IsExtra, f => f.Random.Bool()); // 是否為附加費用
-
-            // 創建 Items 並逐筆添加到 TaipowerBill 的 Items 屬性
-            var items = new List<ExcelColumnCustomerContractBillItem>();
-            var itemCount = new Faker().Random.Int(2, 5); // 隨機生成 2 到 5 個項目
-            for (int i = 0; i < itemCount; i++)
+            var customerContractBills = new List<ExcelColumnCustomerContractBill>
             {
-                items.Add(itemFaker.Generate());
-            }
+                new ExcelColumnCustomerContractBill
+                {
+                    CustomerContractBillId = Guid.NewGuid(), // 客戶契約帳單唯一識別碼
+                    CustomerId = Guid.NewGuid(), // 客戶唯一識別碼
+                    CustomerName = "台灣優衣庫有限公司", // 客戶名稱
+                    CustomerContractId = Guid.NewGuid(), // 客戶契約唯一識別碼
+                    CustomerTaxIDNumber = "25117554", // 客戶統一編號
+                    CustomerAddress = "新北市板橋區縣民大道2段68號15樓", // 客戶地址
+                    CustomerContactNumber = "02-8953-2486", // 客戶聯絡電話
+                    BillCode = "20230413", // 帳單編號
+                    BillYear = 2022, // 帳單年份
+                    BillMonth = 7, // 帳單月份
+                    BillingMethod = BillingMethodType.GroupByBelong, // 帳單開立方式
+                    ReceiveItem = ReceiveItemType.ElecRedistributeCertAuditCertServ, // 收款項目
+                    IsSplitByReceiveItem = false, // 是否依收款項目拆分帳單
+                    IndustCategory = "農業", // 產業類別
+                    EelecBelong = "台灣電綜", // 電號所屬
+                    PaymentDeadline = new DateTime(2023, 8, 25), // 付款截止日期
+                    TotalPowerUse = 229290, // 當月總用電量
+                    SettleTime = new DateTime(2023, 4, 13), // 結帳日期
+                    ModifyTime = DateTime.Now, // 修改時間
+                    Modifier = Guid.NewGuid(), // 修改者
+                    Items = new List<ExcelColumnCustomerContractBillItem>
+                    {
+                        new ExcelColumnCustomerContractBillItem
+                        {
+                            CustomerContractBillItemId = Guid.NewGuid(), // 帳單項目唯一識別碼
+                            CustomerContractBillId = Guid.NewGuid(), // 關聯帳單唯一識別碼
+                            SortOrder = 1, // 排序
+                            ItemName = "再生能源發電費", // 項目名稱
+                            ProjectId = "C007", // 案場專案代號
+                            Unit = "度", // 單位
+                            UnitPrice = 5.7500m, // 單價
+                            Quantity = 229290, // 數量
+                            TotalAmount = 1318418, // 總金額
+                            Note = "", // 備註
+                            Modifier = Guid.NewGuid(), // 修改者
+                            IsExtra = false // 是否為附加費用
+                        },
+                        new ExcelColumnCustomerContractBillItem
+                        {
+                            CustomerContractBillItemId = Guid.NewGuid(),
+                            CustomerContractBillId = Guid.NewGuid(),
+                            SortOrder = 2,
+                            ItemName = "電代購憑證服務費用",
+                            ProjectId = "C007",
+                            Unit = "式",
+                            UnitPrice = 12009,
+                            Quantity = 1,
+                            TotalAmount = 12009,
+                            Note = "",
+                            Modifier = Guid.NewGuid(),
+                            IsExtra = false
+                        },
+                        new ExcelColumnCustomerContractBillItem
+                        {
+                            CustomerContractBillItemId = Guid.NewGuid(),
+                            CustomerContractBillId = Guid.NewGuid(),
+                            SortOrder = 3,
+                            ItemName = "再生能源憑證登錄費",
+                            ProjectId = "C007",
+                            Unit = "張",
+                            UnitPrice = 690,
+                            Quantity = 1,
+                            TotalAmount = 690,
+                            Note = "",
+                            Modifier = Guid.NewGuid(),
+                            IsExtra = false
+                        },
+                        new ExcelColumnCustomerContractBillItem
+                        {
+                            CustomerContractBillItemId = Guid.NewGuid(),
+                            CustomerContractBillId = Guid.NewGuid(),
+                            SortOrder = 4,
+                            ItemName = "再生能源憑證服務費",
+                            ProjectId = "C007",
+                            Unit = "張",
+                            UnitPrice = 111,
+                            Quantity = 1,
+                            TotalAmount = 111,
+                            Note = "",
+                            Modifier = Guid.NewGuid(),
+                            IsExtra = false
+                        }
+                    }
+                }
+            };
 
-            customerContractBill.Items = items; // 將 Items 資料加入 TaipowerBill
-
-            return new List<ExcelColumnCustomerContractBill> { customerContractBill }; // 返回包含 1 筆假資料的列表
+            return customerContractBills;
         }
     }
 }

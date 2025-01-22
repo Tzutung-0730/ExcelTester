@@ -7,8 +7,20 @@
       "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\classes\\suppliercontractbillword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\emeie\\systexdocument\\exceltester\\exceltester\\classes\\customercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\classes\\customercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\emeie\\systexdocument\\exceltester\\exceltester\\staticmodelsuppliercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\staticmodelsuppliercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\emeie\\systexdocument\\exceltester\\exceltester\\staticmodelcustomercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\staticmodelcustomercontractbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|c:\\users\\emeie\\systexdocument\\exceltester\\exceltester\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2279F39-8264-4DB9-BCBD-E08D8369F5A6}|ExcelTester\\ExcelTester.csproj|solutionrelative:exceltester\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,15 +66,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "StaticModelSupplierContractBill.cs",
               "DocumentMoniker": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\StaticModelSupplierContractBill.cs",
               "RelativeDocumentMoniker": "ExcelTester\\StaticModelSupplierContractBill.cs",
               "ToolTip": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\StaticModelSupplierContractBill.cs",
               "RelativeToolTip": "ExcelTester\\StaticModelSupplierContractBill.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T07:54:55.397Z"
+              "WhenOpened": "2025-01-22T00:59:24.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CustomerContractBill.cs",
+              "DocumentMoniker": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\CustomerContractBill.cs",
+              "RelativeDocumentMoniker": "ExcelTester\\Classes\\CustomerContractBill.cs",
+              "ToolTip": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\CustomerContractBill.cs",
+              "RelativeToolTip": "ExcelTester\\Classes\\CustomerContractBill.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAqwEEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-21T08:49:22.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\Form1.cs",
+              "RelativeDocumentMoniker": "ExcelTester\\Form1.cs",
+              "ToolTip": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\Form1.cs",
+              "RelativeToolTip": "ExcelTester\\Form1.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAmwGgAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-21T07:57:31.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StaticModelCustomerContractBill.cs",
+              "DocumentMoniker": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\StaticModelCustomerContractBill.cs",
+              "RelativeDocumentMoniker": "ExcelTester\\StaticModelCustomerContractBill.cs",
+              "ToolTip": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\StaticModelCustomerContractBill.cs",
+              "RelativeToolTip": "ExcelTester\\StaticModelCustomerContractBill.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwB8AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-21T08:19:09.524Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -72,9 +123,9 @@
               "RelativeDocumentMoniker": "ExcelTester\\Classes\\SupplierContractBillWord.cs",
               "ToolTip": "C:\\Users\\emeie\\SystexDocument\\ExcelTester\\ExcelTester\\Classes\\SupplierContractBillWord.cs",
               "RelativeToolTip": "ExcelTester\\Classes\\SupplierContractBillWord.cs",
-              "ViewState": "AgIAAN4AAAAAAAAAAAAqwOgAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAK8AAAAAAAAAAAAqwOoAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T07:14:10.023Z",
+              "WhenOpened": "2025-01-21T09:13:30.972Z",
               "EditorCaption": ""
             }
           ]

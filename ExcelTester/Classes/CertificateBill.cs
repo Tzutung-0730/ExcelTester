@@ -24,18 +24,21 @@ namespace ExcelTester.Classes
 
             int sheet2CurrentRow = 2;
             var bill = excelData.First();
+            var totalCertificateFee = bill.Items.Sum(i => i.CertificateFee);
+            var totalServiceFee = bill.Items.Sum(i => i.ServiceFee);
+            var totalFee = totalCertificateFee + totalServiceFee;
 
             // 結算日期
-            sheet1.Cells[4, 14].Value = $"{bill.SettleTime:yyy/MM/dd}";
+            sheet1.Cells[4, 14].Value = $"{bill.SettleTime.Year - 1911}/{bill.SettleTime:MM/dd}";
 
             // 事由
             sheet1.Cells[5, 3].Value = $"{bill.BillYear - 1911}/{bill.BillMonth:D2} 份 再生能源憑證規費";
 
             // 說明第1點
-            sheet1.Cells[9, 2].Value = $"1、繳納 {bill.BillYear - 1911}/{bill.BillMonth:D2} 再生能源憑證規費，審審查費總計 NTD${bill.Items.Sum(i => i.CertificateFee):N0}，服務費總計 NTD${bill.Items.Sum(i => i.ServiceFee):N0}，共計 NTD${bill.Items.Sum(i => i.CertificateFee + i.ServiceFee):N0}，詳見清單。";
+            sheet1.Cells[9, 2].Value = $"1、繳納 {bill.BillYear - 1911}/{bill.BillMonth:D2} 再生能源憑證規費，審查費總計 NTD${bill.Items.Sum(i => i.CertificateFee):N0}，服務費總計 NTD${bill.Items.Sum(i => i.ServiceFee):N0}，共計 NTD${bill.Items.Sum(i => i.CertificateFee + i.ServiceFee):N0}，詳見清單。";
 
             // 說明第3點
-            sheet1.Cells[14, 2].Value = $"3、請財務部安排於 {bill.PaymentDeadline:yyy/MM/dd} 前繳納（憑證中心同意）。";
+            sheet1.Cells[14, 2].Value = $"3、請財務部安排於 {bill.PaymentDeadline.Year - 1911}/{bill.PaymentDeadline:MM/dd} 前繳納（憑證中心同意）。";
 
             foreach (var item in bill.Items)
             {
@@ -59,11 +62,11 @@ namespace ExcelTester.Classes
 
             // 填寫總計行到 sheet2
             sheet2.Cells[sheet2CurrentRow, 1].Value = "總計金額";
-            sheet2.Cells[sheet2CurrentRow, 4].Formula = $"SUM(D2:D{sheet2CurrentRow - 1})";
-            sheet2.Cells[sheet2CurrentRow, 5].Formula = $"SUM(E2:E{sheet2CurrentRow - 1})";
+            sheet2.Cells[sheet2CurrentRow, 4].Value = totalCertificateFee;
+            sheet2.Cells[sheet2CurrentRow, 5].Value = totalServiceFee;
 
             // 填寫付款金額到 sheet1
-            sheet1.Cells[17, 8].Formula = $"=清單!D{sheet2CurrentRow} + 清單!E{sheet2CurrentRow}";
+            sheet1.Cells[17, 8].Value = totalFee;
 
             // 設定總計行的樣式
             sheet2.Cells[sheet2CurrentRow, 1, sheet2CurrentRow, 5].Style.Font.Bold = true;

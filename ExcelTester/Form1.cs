@@ -19,8 +19,8 @@ namespace ExcelTester
             {
                 var fileName = openFileDialog1.FileName;
                 var newFileName = $"{Path.GetDirectoryName(fileName)}/{Path.GetFileNameWithoutExtension(fileName)}1{Path.GetExtension(fileName)}";
-                var fakeData = StaticModelTaipowerBill.GenerateFakeData();
-                TaipowerBill.WriteExcel(fileName, newFileName, fakeData);
+                var data = StaticModelTaipowerBill.GetData();
+                TaipowerBill.WriteExcel(fileName, newFileName, data);
             }
 
             MessageBox.Show("Done");
@@ -36,8 +36,8 @@ namespace ExcelTester
             {
                 var fileName = openFileDialog1.FileName;
                 var newFileName = $"{Path.GetDirectoryName(fileName)}/{Path.GetFileNameWithoutExtension(fileName)}1{Path.GetExtension(fileName)}";
-                var fakeData = StaticModelCertificateBill.GenerateFakeData();
-                CertificateBill.WriteExcel(fileName, newFileName, fakeData);
+                var data = StaticModelCertificateBill.GetData();
+                CertificateBill.WriteExcel(fileName, newFileName, data);
             }
 
             MessageBox.Show("Done");
@@ -53,8 +53,8 @@ namespace ExcelTester
             {
                 var fileName = openFileDialog1.FileName;
                 var newFileName = $"{Path.GetDirectoryName(fileName)}/{Path.GetFileNameWithoutExtension(fileName)}1{Path.GetExtension(fileName)}";
-                var fakeData = StaticModelSupplierContractBill.GenerateFakeData();
-                SupplierContractBill.WriteExcel_Invoice(fileName, newFileName, fakeData);
+                var data = StaticModelSupplierContractBill.GetData();
+                SupplierContractBill.WriteExcel_Invoice(fileName, newFileName, data);
             }
 
             MessageBox.Show("Done");
@@ -70,8 +70,8 @@ namespace ExcelTester
             {
                 var fileName = openFileDialog1.FileName;
                 var newFileName = $"{Path.GetDirectoryName(fileName)}/{Path.GetFileNameWithoutExtension(fileName)}1{Path.GetExtension(fileName)}";
-                var fakeData = StaticModelSupplierContractBill.GenerateFakeData();
-                SupplierContractBill.WriteExcel_PaymentNotice(fileName, newFileName, fakeData);
+                var data = StaticModelSupplierContractBill.GetData();
+                SupplierContractBill.WriteExcel_PaymentNotice(fileName, newFileName, data);
             }
 
             MessageBox.Show("Done");
@@ -87,8 +87,8 @@ namespace ExcelTester
             {
                 var fileName = openFileDialog1.FileName;
                 var newFileName = $"{Path.GetDirectoryName(fileName)}/{Path.GetFileNameWithoutExtension(fileName)}1{Path.GetExtension(fileName)}";
-                var fakeData = StaticModelCustomerContractBill.GenerateFakeData();
-                CustomerContractBill.WriteExcel_Invoice(fileName, newFileName, fakeData);
+                var data = StaticModelCustomerContractBill.GetData();
+                CustomerContractBill.WriteExcel_Invoice(fileName, newFileName, data);
             }
 
             MessageBox.Show("Done");
@@ -104,8 +104,8 @@ namespace ExcelTester
             {
                 var fileName = openFileDialog1.FileName;
                 var newFileName = $"{Path.GetDirectoryName(fileName)}/{Path.GetFileNameWithoutExtension(fileName)}1{Path.GetExtension(fileName)}";
-                var fakeData = StaticModelCustomerContractBill.GenerateFakeData();
-                CustomerContractBill.WriteExcel_PaymentNotice(fileName, newFileName, fakeData);
+                var data = StaticModelCustomerContractBill.GetData();
+                CustomerContractBill.WriteExcel_PaymentNotice(fileName, newFileName, data);
             }
 
             MessageBox.Show("Done");
@@ -121,8 +121,8 @@ namespace ExcelTester
             {
                 var fileName = openFileDialog1.FileName;
                 var newFileName = $"{Path.GetDirectoryName(fileName)}/{Path.GetFileNameWithoutExtension(fileName)}1{Path.GetExtension(fileName)}";
-                var fakeData = StaticModelSupplierContractBill.GenerateFakeData();
-                SupplierContractBillWord.WriteWord(fileName, newFileName, fakeData);
+                var data = StaticModelSupplierContractBill.GetData();
+                SupplierContractBillWord.WriteWord(fileName, newFileName, data);
             }
 
             MessageBox.Show("Done");

@@ -1,49 +1,163 @@
-﻿using Bogus;
+﻿using System;
 using ExcelTester.Classes;
 
 namespace ExcelTester
 {
     internal static class StaticModelTaipowerBill
     {
-        // 生成假資料 for TaipowerBill（包含 Items 資料）
-        public static IEnumerable<ExcelColumnTaipowerBill> GenerateFakeData()
+        public static IEnumerable<ExcelColumnTaipowerBill> GetData()
         {
-            // 生成單一 TaipowerBill 的假資料
-            var billFaker = new Faker<ExcelColumnTaipowerBill>()
-                .RuleFor(o => o.TaipowerBillId, f => Guid.NewGuid()) // 台電帳單 ID
-                .RuleFor(o => o.BillYear, f => f.Date.Past(10).Year) // 帳單年份
-                .RuleFor(o => o.BillMonth, f => f.Date.Past(10).Month) // 帳單月份
-                .RuleFor(o => o.PaymentDeadline, f => f.Date.Future()) // 付款截止日
-                .RuleFor(o => o.SettleTime, f => f.Date.Future()) // 結帳日
-                .RuleFor(o => o.Modifier, f => Guid.NewGuid()); // 修改者 ID
-
-            // 生成 1 筆 TaipowerBill 假資料
-            var taipowerBill = billFaker.Generate(1).First();
-
-            // 創建 Items 並逐筆添加
-            var itemFaker = new Faker<ExcelColumnTaipowerBillItem>()
-                .RuleFor(o => o.ProjectId, f => f.Random.AlphaNumeric(10)) // 專案Id
-                .RuleFor(o => o.SupplierPlaceName, f => f.Company.CompanyName()) // 供應商地點名稱
-                .RuleFor(o => o.CustomerName, f => f.Name.FullName()) // 客戶名稱
-                .RuleFor(o => o.TotalAmount, f => f.Random.Int(1000, 50000)) // 總金額
-                .RuleFor(o => o.IsExtra, f => f.Random.Bool()) // 是否為附加費用
-                .RuleFor(o => o.TaipowerBillItemId, f => Guid.NewGuid()) // 台電帳單項目 ID
-                .RuleFor(o => o.TaipowerBillId, f => taipowerBill.TaipowerBillId) // 台電帳單 ID
-                .RuleFor(o => o.SupplierPlaceId, f => Guid.NewGuid()) // 供應商地點 ID
-                .RuleFor(o => o.CustomerId, f => Guid.NewGuid()) // 客戶 ID
-                .RuleFor(o => o.Modifier, f => Guid.NewGuid()); // 修改者 ID
-
-            // 創建 Items 並逐筆添加到 TaipowerBill 的 Items 屬性
-            var items = new List<ExcelColumnTaipowerBillItem>();
-            var itemCount = new Faker().Random.Int(2, 5); // 隨機生成 2 到 5 個項目
-            for (int i = 0; i < itemCount; i++)
+            var taipowerBills = new List<ExcelColumnTaipowerBill>
             {
-                items.Add(itemFaker.Generate());
-            }
+                new ExcelColumnTaipowerBill
+                {
+                    TaipowerBillId = Guid.NewGuid(), // 台電帳單 ID
+                    BillYear = 2022, // 帳單年份
+                    BillMonth = 12, // 帳單月份
+                    PaymentDeadline = new DateTime(2023, 2, 1), // 付款截止日
+                    SettleTime = new DateTime(2023, 1, 18), // 結帳日
+                    Modifier = Guid.NewGuid(), // 修改者 ID
+                    Items = new List<ExcelColumnTaipowerBillItem>
+                    {
+                        // C001 專案代號
+                        new ExcelColumnTaipowerBillItem
+                        {
+                            TaipowerBillItemId = Guid.NewGuid(),
+                            TaipowerBillId = Guid.NewGuid(),
+                            ProjectId = "C001",
+                            SupplierPlaceId = Guid.NewGuid(),
+                            SupplierPlaceName = "苗栗風力-竹南",
+                            CustomerId = Guid.NewGuid(),
+                            CustomerName = "台積電 P6",
+                            TotalAmount = 161738,
+                            IsExtra = false,
+                            Modifier = Guid.NewGuid()
+                        },
+                        new ExcelColumnTaipowerBillItem
+                        {
+                            TaipowerBillItemId = Guid.NewGuid(),
+                            TaipowerBillId = Guid.NewGuid(),
+                            ProjectId = "C001",
+                            SupplierPlaceId = Guid.NewGuid(),
+                            SupplierPlaceName = "苗栗風力-大鵬",
+                            CustomerId = Guid.NewGuid(),
+                            CustomerName = "台積電 P6",
+                            TotalAmount = 574537,
+                            IsExtra = false,
+                            Modifier = Guid.NewGuid()
+                        },
+                        new ExcelColumnTaipowerBillItem
+                        {
+                            TaipowerBillItemId = Guid.NewGuid(),
+                            TaipowerBillId = Guid.NewGuid(),
+                            ProjectId = "C001",
+                            SupplierPlaceId = Guid.NewGuid(),
+                            SupplierPlaceName = "苗栗風力-大鵬",
+                            CustomerId = Guid.NewGuid(),
+                            CustomerName = "台積電 P4",
+                            TotalAmount = 143634,
+                            IsExtra = false,
+                            Modifier = Guid.NewGuid()
+                        },
+                        // C004 專案代號
+                        new ExcelColumnTaipowerBillItem
+                        {
+                            TaipowerBillItemId = Guid.NewGuid(),
+                            TaipowerBillId = Guid.NewGuid(),
+                            ProjectId = "C004",
+                            SupplierPlaceId = Guid.NewGuid(),
+                            SupplierPlaceName = "鑫光",
+                            CustomerId = Guid.NewGuid(),
+                            CustomerName = "台灣固鋼",
+                            TotalAmount = 12297,
+                            IsExtra = false,
+                            Modifier = Guid.NewGuid()
+                        },
+                        new ExcelColumnTaipowerBillItem
+                        {
+                            TaipowerBillItemId = Guid.NewGuid(),
+                            TaipowerBillId = Guid.NewGuid(),
+                            ProjectId = "C004",
+                            SupplierPlaceId = Guid.NewGuid(),
+                            SupplierPlaceName = "鑫光",
+                            CustomerId = Guid.NewGuid(),
+                            CustomerName = "台綜院",
+                            TotalAmount = 117,
+                            IsExtra = false,
+                            Modifier = Guid.NewGuid()
+                        },
+                        new ExcelColumnTaipowerBillItem
+                        {
+                            TaipowerBillItemId = Guid.NewGuid(),
+                            TaipowerBillId = Guid.NewGuid(),
+                            ProjectId = "C004",
+                            SupplierPlaceId = Guid.NewGuid(),
+                            SupplierPlaceName = "鑫光",
+                            CustomerId = Guid.NewGuid(),
+                            CustomerName = "富邦銀行",
+                            TotalAmount = 1842,
+                            IsExtra = false,
+                            Modifier = Guid.NewGuid()
+                        },
+                        new ExcelColumnTaipowerBillItem
+                        {
+                            TaipowerBillItemId = Guid.NewGuid(),
+                            TaipowerBillId = Guid.NewGuid(),
+                            ProjectId = "C004",
+                            SupplierPlaceId = Guid.NewGuid(),
+                            SupplierPlaceName = "鑫光",
+                            CustomerId = Guid.NewGuid(),
+                            CustomerName = "櫃買中心",
+                            TotalAmount = 1006,
+                            IsExtra = false,
+                            Modifier = Guid.NewGuid()
+                        },
+                        // C005 專案代號
+                        new ExcelColumnTaipowerBillItem
+                        {
+                            TaipowerBillItemId = Guid.NewGuid(),
+                            TaipowerBillId = Guid.NewGuid(),
+                            ProjectId = "C005",
+                            SupplierPlaceId = Guid.NewGuid(),
+                            SupplierPlaceName = "星寶",
+                            CustomerId = Guid.NewGuid(),
+                            CustomerName = "台達電",
+                            TotalAmount = 196245,
+                            IsExtra = false,
+                            Modifier = Guid.NewGuid()
+                        },
+                        new ExcelColumnTaipowerBillItem
+                        {
+                            TaipowerBillItemId = Guid.NewGuid(),
+                            TaipowerBillId = Guid.NewGuid(),
+                            ProjectId = "C005",
+                            SupplierPlaceId = Guid.NewGuid(),
+                            SupplierPlaceName = "星寶",
+                            CustomerId = Guid.NewGuid(),
+                            CustomerName = "台固網及台灣大",
+                            TotalAmount = 99105,
+                            IsExtra = false,
+                            Modifier = Guid.NewGuid()
+                        },
+                        // C007 專案代號
+                        new ExcelColumnTaipowerBillItem
+                        {
+                            TaipowerBillItemId = Guid.NewGuid(),
+                            TaipowerBillId = Guid.NewGuid(),
+                            ProjectId = "C007",
+                            SupplierPlaceId = Guid.NewGuid(),
+                            SupplierPlaceName = "華洋力麗",
+                            CustomerId = Guid.NewGuid(),
+                            CustomerName = "台灣優衣大",
+                            TotalAmount = 12609,
+                            IsExtra = false,
+                            Modifier = Guid.NewGuid()
+                        }
+                    }
+                }
+            };
 
-            taipowerBill.Items = items; // 將 Items 資料加入 TaipowerBill
-
-            return new List<ExcelColumnTaipowerBill> { taipowerBill }; // 返回包含 1 筆假資料的列表
+            return taipowerBills;
         }
     }
 }

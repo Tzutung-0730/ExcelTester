@@ -24,9 +24,12 @@ namespace ExcelTester.Classes
             ExcelWorksheet sheet1 = package.Workbook.Worksheets[0];
 
             var bill = excelData.First();
+            var totalAmount = bill.Items.Sum(i => i.TotalAmount);
+            var tax = Math.Round(totalAmount * 0.05, 0);
+            var totalWithTax = totalAmount + tax;
 
             // 結算日期
-            sheet1.Cells[4, 14].Value = $"{bill.SettleTime:yyy/MM/dd}";
+            sheet1.Cells[4, 14].Value = $"{bill.SettleTime.Year - 1911}/{bill.SettleTime:MM/dd}";
             
             // 事由
             sheet1.Cells[5, 3].Value = $"{bill.BillYear - 1911}/{bill.BillMonth:D2} 份再生能源電能費用({bill.SupplierName})";
@@ -39,8 +42,8 @@ namespace ExcelTester.Classes
             sheet1.Cells[6, 10].Value = $"專案工作代號：{projectCodes}";
 
             // 說明第1點
-            var supplierCodes = string.Join("、", bill.Items.Select(i => i.SupplierPlaceId));
-            sheet1.Cells[9, 2].Value = $"1、{bill.SupplierName}案場電號{supplierCodes}，再生能源電能費用計 NT${bill.Items.Sum(i => i.TotalAmount):N0}元(含稅)。";
+            var supplierCodes = string.Join("、", bill.Items.Select(i => i.SupplierElectricityNumber));
+            sheet1.Cells[9, 2].Value = $"1、{bill.SupplierName}案場電號{supplierCodes}，再生能源電能費用計 NT${totalWithTax:N0}元(含稅)。";
 
             // 說明第2點
             sheet1.Cells[11, 2].Value = $"  戶名：{bill.ReceiveName}";
@@ -53,7 +56,7 @@ namespace ExcelTester.Classes
             // 填寫付款資訊到 sheet1
             sheet1.Cells[19, 2].Value = bill.SupplierName;
             sheet1.Cells[19, 6].Value = bill.PaymentMethod;
-            sheet1.Cells[19, 8].Value = bill.Items.Sum(i => i.TotalAmount);
+            sheet1.Cells[19, 8].Value = totalWithTax;
 
             package.SaveAs(new FileInfo(newFileName));
         }
@@ -66,15 +69,16 @@ namespace ExcelTester.Classes
             ExcelWorksheet sheet1 = package.Workbook.Worksheets[0];
 
             var bill = excelData.First();
-
-            sheet1.Cells[5, 4].Value = bill.SupplierContractBillId;
-            sheet1.Cells[5, 10].Value = $"製發日期：{bill.SettleTime:yyyy/MM/dd}";
-            sheet1.Cells[5, 10, 5, 11].Merge = false;
-
             var startDate = new DateTime(bill.BillYear, bill.BillMonth, 1);
             var endDate = startDate.AddMonths(1).AddDays(-1);
-            sheet1.Cells[5, 7].Value = $"{startDate:yyyy/MM/dd}~{endDate:yyyy/MM/dd}";
+            var totalAmount = bill.Items.Sum(i => i.TotalAmount);
+            var tax = Math.Round(totalAmount * 0.05, 0);
+            var totalWithTax = totalAmount + tax;
 
+            sheet1.Cells[5, 4].Value = bill.BillCode;
+            sheet1.Cells[5, 10].Value = $"製發日期：{bill.SettleTime:yyyy/MM/dd}";
+            sheet1.Cells[5, 10, 5, 11].Merge = false;
+            sheet1.Cells[5, 7].Value = $"{startDate:yyyy/MM/dd}~{endDate:yyyy/MM/dd}";
             sheet1.Cells[6, 4].Value = bill.SupplierName;
             sheet1.Cells[7, 4].Value = bill.SupplierTaxIDNumber;
             sheet1.Cells[8, 4].Value = bill.SupplierAddress;
@@ -112,10 +116,10 @@ namespace ExcelTester.Classes
             }
 
             if (currentRow < 18) currentRow = 18;
- 
-            sheet1.Cells[currentRow, 8].Formula = $"=SUM(H{startRow}:H{currentRow - 1})";
-            sheet1.Cells[currentRow + 1, 8].Formula = $"=ROUND(H{currentRow}*5%,0)";
-            sheet1.Cells[currentRow + 2, 8].Formula = $"=H{currentRow} + H{currentRow + 1}";
+
+            sheet1.Cells[currentRow, 8].Value = totalAmount; 
+            sheet1.Cells[currentRow + 1, 8].Value = tax;
+            sheet1.Cells[currentRow + 2, 8].Value = totalWithTax;
             sheet1.Cells[currentRow + 7, 1].Value = $"付款方式 ： {bill.PaymentMethod}";
             sheet1.Cells[currentRow + 8, 1].Value = $"收款戶名 ： {bill.ReceiveName}";
             sheet1.Cells[currentRow + 9, 1].Value = $"收款行庫 ： {bill.ReceiveBankName}";

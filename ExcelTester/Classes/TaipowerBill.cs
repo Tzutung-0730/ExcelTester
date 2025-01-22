@@ -24,18 +24,20 @@ namespace ExcelTester.Classes
 
             int sheet2CurrentRow = 2;
             var bill = excelData.First();
+            var totalWithoutTax = bill.Items.Sum(i => Math.Round(i.TotalAmount / 1.25, 0));
+            var totalWithTax = bill.Items.Sum(i => i.TotalAmount);
 
             // 結算日期
-            sheet1.Cells[4, 14].Value = $"{bill.SettleTime:yyy/MM/dd}";
+            sheet1.Cells[4, 14].Value = $"{bill.SettleTime.Year - 1911}/{bill.SettleTime:MM/dd}";
 
             // 事由
             sheet1.Cells[5, 3].Value = $"繳納 {bill.BillYear - 1911}/{bill.BillMonth:D2} 轉供費用";
 
             // 說明第1點
-            sheet1.Cells[9, 2].Value = $"1、繳納 {bill.BillYear - 1911}/{bill.BillMonth:D2} 台電轉供費用，總計 NT${bill.Items.Sum(i => i.TotalAmount):N0} (含稅)，詳見清單。";
+            sheet1.Cells[9, 2].Value = $"1、繳納 {bill.BillYear - 1911}/{bill.BillMonth:D2} 台電轉供費用，總計 NT${totalWithTax:N0} (含稅)，詳見清單。";
                 
             // 說明第3點
-            sheet1.Cells[14, 2].Value = $"3、請財務部安排於 {bill.PaymentDeadline:yyy/MM/dd} 前繳納。";
+            sheet1.Cells[14, 2].Value = $"3、請財務部安排於 {bill.PaymentDeadline.Year - 1911}/{bill.PaymentDeadline:MM/dd} 前繳納。";
 
             foreach (var item in bill.Items)
             {
@@ -43,7 +45,7 @@ namespace ExcelTester.Classes
                 sheet2.Cells[sheet2CurrentRow, 1].Value = item.ProjectId;
                 sheet2.Cells[sheet2CurrentRow, 2].Value = item.SupplierPlaceName;
                 sheet2.Cells[sheet2CurrentRow, 3].Value = item.CustomerName;
-                sheet2.Cells[sheet2CurrentRow, 4].Value = item.TotalAmount / 1.25;
+                sheet2.Cells[sheet2CurrentRow, 4].Value = Math.Round(item.TotalAmount / 1.25, 0); ;
                 sheet2.Cells[sheet2CurrentRow, 5].Value = item.TotalAmount;
 
                 for (int col = 1; col <= 5; col++)
@@ -59,11 +61,11 @@ namespace ExcelTester.Classes
 
             // 填寫總計行到 sheet2
             sheet2.Cells[sheet2CurrentRow, 1].Value = "總計金額";
-            sheet2.Cells[sheet2CurrentRow, 4].Formula = $"SUM(D2:D{sheet2CurrentRow - 1})";
-            sheet2.Cells[sheet2CurrentRow, 5].Formula = $"SUM(E2:E{sheet2CurrentRow - 1})";
+            sheet2.Cells[sheet2CurrentRow, 4].Value = totalWithoutTax;
+            sheet2.Cells[sheet2CurrentRow, 5].Value = totalWithTax;
 
             // 填寫付款金額到 sheet1
-            sheet1.Cells[17, 8].Formula = $"=清單!E{sheet2CurrentRow}";
+            sheet1.Cells[17, 8].Value = totalWithTax;
 
             // 設定總計行的樣式
             sheet2.Cells[sheet2CurrentRow, 1, sheet2CurrentRow, 5].Style.Font.Bold = true;
